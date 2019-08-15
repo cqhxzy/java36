@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3da917bd-ddc4-4ae5-a4ab-3d030db0bfec" name="Default Changelist" comment="">
+    <list default="true" id="35cf002d-2b3f-411d-9632-e181b7c26da0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,42 +17,62 @@
     <session id="-689273394">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.46" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Field" value="1" />
-          <entry key="Method" value="1" />
-          <entry key="PropertyDescriptor" value="1" />
-          <entry key="class" value="7" />
-          <entry key="java" value="21" />
+          <entry key="java" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="7" />
-          <entry key="JAVA" value="21" />
-          <entry key="UML" value="3" />
+          <entry key="JAVA" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2373" />
+          <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2373" />
+          <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test1/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test1/Test2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test2/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,20 +83,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/test1/Test1.java" />
-        <option value="$PROJECT_DIR$/src/test1/Human.java" />
-        <option value="$PROJECT_DIR$/src/test1/Test2.java" />
-        <option value="$PROJECT_DIR$/src/test1/TestConstructor.java" />
-        <option value="$PROJECT_DIR$/src/test1/TestFeild.java" />
-        <option value="$PROJECT_DIR$/src/test1/TestMethod.java" />
-        <option value="$PROJECT_DIR$/src/test1/Student.java" />
-        <option value="$PROJECT_DIR$/src/test1/TestIntrospector.java" />
-      </list>
-    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -113,7 +121,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>SerializableHasSerialVersionUIDField</id>
+            <id>unused</id>
           </State>
         </selected-state>
       </profile-state>
@@ -137,28 +145,13 @@
             <path>
               <item name="20190814" type="b2602c69:ProjectViewProjectNode" />
               <item name="20190814" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="20190814" type="b2602c69:ProjectViewProjectNode" />
               <item name="20190814" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="20190814" type="b2602c69:ProjectViewProjectNode" />
-              <item name="20190814" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="20190814" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="20190814" type="b2602c69:ProjectViewProjectNode" />
-              <item name="20190814" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="20190814" type="462c0819:PsiDirectoryNode" />
-              <item name="test1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -168,10 +161,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,133 +178,57 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestIntrospector">
-    <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test1.Test2" />
-      <module name="20190814" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConstructor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test1.TestConstructor" />
-      <module name="20190814" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestFeild" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test1.TestFeild" />
-      <module name="20190814" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestIntrospector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test1.TestIntrospector" />
-      <module name="20190814" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMethod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test1.TestMethod" />
-      <module name="20190814" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Test2" />
-      <item itemvalue="Application.TestConstructor" />
-      <item itemvalue="Application.TestFeild" />
-      <item itemvalue="Application.TestMethod" />
-      <item itemvalue="Application.TestIntrospector" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.TestIntrospector" />
-        <item itemvalue="Application.TestMethod" />
-        <item itemvalue="Application.TestFeild" />
-        <item itemvalue="Application.TestConstructor" />
-        <item itemvalue="Application.Test2" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3da917bd-ddc4-4ae5-a4ab-3d030db0bfec" name="Default Changelist" comment="" />
-      <created>1565754008839</created>
+      <changelist id="35cf002d-2b3f-411d-9632-e181b7c26da0" name="Default Changelist" comment="" />
+      <created>1565835020082</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1565754008839</updated>
-      <workItem from="1565754011680" duration="10153000" />
-      <workItem from="1565829141900" duration="1715000" />
+      <updated>1565835020082</updated>
+      <workItem from="1565835022731" duration="265000" />
     </task>
+    <task id="LOCAL-00001" summary="add Test.java">
+      <created>1565835162887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1565835162888</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11868000" />
+    <option name="totallyTimeSpent" value="265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987245" visible="true" weight="0.17750533" />
-      <window_info id="Structure" order="1" sideWeight="0.50127554" side_tool="true" weight="0.17590618" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Code Review" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.15059589" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Code Review" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,263 +237,29 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add Test.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Test.java" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test1/Human.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="121" column="48" lean-forward="true" selection-start-line="121" selection-start-column="48" selection-end-line="121" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/reflect/Modifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test1/TestConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/java.lang.reflect.Field">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>java.lang.reflect.Field</OriginalElement>
-          <nodes>
-            <node x="" y="">java.lang.reflect.Field</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="134.0" y="630.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/reflect/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/java.lang.reflect.Method">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>java.lang.reflect.Method</OriginalElement>
-          <nodes>
-            <node x="" y="">java.lang.reflect.Method</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="221.0" y="155.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/beans/ThreadGroupContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="62" column="49" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/java.beans.PropertyDescriptor">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>java.beans.PropertyDescriptor</OriginalElement>
-          <nodes>
-            <node x="" y="">java.beans.PropertyDescriptor</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="80.0" y="230.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/beans/Introspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="1388" column="29" selection-start-line="1388" selection-start-column="29" selection-end-line="1388" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/beans/PropertyDescriptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="297" column="45" lean-forward="true" selection-start-line="297" selection-start-column="45" selection-end-line="297" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test1/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test1/TestIntrospector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test1/TestMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test1/TestFeild.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test1/Test1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="100">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test1/Test2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="370">
+          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/reflect/Method.java">
+    <entry file="file://$PROJECT_DIR$/src/test2/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/Human.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/Test1.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#827#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/Test2.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <folding>
-            <element signature="e#0#1768#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/TestMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#1027#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/TestConstructor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#1044#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/TestFeild.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <folding>
-            <element signature="e#0#1775#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/20190814/test1/TestIntrospector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="30" column="54" lean-forward="true" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#1472#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
