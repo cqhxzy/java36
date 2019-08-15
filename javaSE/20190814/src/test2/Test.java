@@ -5,5 +5,6 @@ public class Test {
         //声明int变量
         int i = 10;
 
+        System.out.println(i);
     }
 }
