@@ -1,10 +1,10 @@
 package productorAndCustomer;
 
-public class Productor implements Runnable {
+public class Producter implements Runnable {
 
     private Repo repo;
 
-    public Productor(Repo repo) {
+    public Producter(Repo repo) {
         this.repo = repo;
     }
 
