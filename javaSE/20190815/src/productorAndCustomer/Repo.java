@@ -8,6 +8,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 /**
  * 仓库类
  * 共享资源
+ * 通过同步方法的形式实现
  */
 public class Repo {
 
@@ -18,6 +19,7 @@ public class Repo {
      * 生产
      */
     public synchronized void product(){
+        /*总是假设虚假唤醒会成立*/
         while (count >= capability) {
             try {
                 System.out.println("当前仓库达到上限，生产开始等待消费");
