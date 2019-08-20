@@ -35,4 +35,13 @@ public class StringUtil {
             return string;
         }
     }
+
+    public static String convertObj2String(Object object){
+        if (object.getClass().getName().endsWith("Date")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String format = sdf.format(object);
+            return format;
+        }
+        return object.toString();
+    }
 }

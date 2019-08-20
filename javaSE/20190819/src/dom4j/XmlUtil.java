@@ -2,14 +2,22 @@ package dom4j;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 
 import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,4 +123,95 @@ public class XmlUtil {
         }
         return null;
     }
+
+    /**
+     * 将集合写回xml
+     * @param list
+     * @param <T>
+     */
+    public <T> void write2Xml(List<T> list){
+        //验证文件是否存在
+        File file = new File(PATH);
+        if (!file.exists()){
+            try {
+                file.createNewFile(); //如果文件不存在就创建一个xml文件
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        SAXReader reader = new SAXReader();
+        Document document = null;
+        try {
+            document = reader.read(file);
+        } catch (DocumentException e) {
+            document = createDocument();
+            document.addElement("root"); //添加根节点
+        }
+
+        Element rootElement = document.getRootElement();
+        for (T t : list) {
+            String name = t.getClass().getName();//得到类的完整名称，dom4j.Food
+            String element_name = name.substring(name.lastIndexOf(".") + 1).toLowerCase();//将Food转换为food
+            Element element = rootElement.addElement(element_name); //得到food节点
+
+            try {
+                BeanInfo beanInfo = Introspector.getBeanInfo(t.getClass());
+
+                PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors(); //得到属性
+                for (PropertyDescriptor descriptor : propertyDescriptors) {
+                    String name1 = descriptor.getName(); //得到属性名。name,price,count,date
+                    if (name1.equalsIgnoreCase("class")) { //getClass方法，内省机制会将getClass方法理解称为有个属性就是class
+                        continue;
+                    }
+                    Element element1 = element.addElement(name1);
+
+                    //通过getXXX方法获取属性值
+                    Method readMethod = descriptor.getReadMethod();
+                    Object invoke = readMethod.invoke(t); //得到方法的返回值
+
+                    String s = StringUtil.convertObj2String(invoke);
+                    element1.setText(s);
+                }
+
+            } catch (IntrospectionException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+
+        writeDocument(document);
+
+
+
+    }
+
+    public Document createDocument(){
+        Document document = DocumentHelper.createDocument();
+        document.setXMLEncoding("utf-8");
+        return document;
+    }
+
+    /**
+     * 将document写到文件
+     * @param document
+     */
+    public void writeDocument(Document document) {
+        try {
+            FileWriter fileWriter = new FileWriter(PATH);
+            OutputFormat format = OutputFormat.createPrettyPrint();
+            XMLWriter writer = new XMLWriter(fileWriter, format);
+
+            writer.write(document);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
