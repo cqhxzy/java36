@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      /*
+        匹配p标签所在父级元素中第一个p元素
+        */
+      p:first-child {
+        color: blue;
+      }
+
+      /*
+        对.second选择器匹配的元素中所有的p标签中找到最后一个
+        */
+      .second p:last-child {
+        color: green;
+      }
+      table {
+        width: 500px;
+      }
+      table,
+      td,
+      th {
+        border: 1px solid #000;
+        border-collapse: collapse; /*相邻边框合并*/
+        text-align: center;
+      }
+
+      tbody tr:nth-child(even){
+        background: pink
+      }
+      tbody tr:nth-child(odd){
+          background: rgb(197, 190, 190);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>第一个div</h1>
+    <div>
+      <p>p1</p>
+      <p>p2</p>
+      <p>p3</p>
+      <ul>
+        <li><p>p4</p></li>
+        <li><p>p5</p></li>
+        <li><p>p6</p></li>
+      </ul>
+    </div>
+
+    <h1>第二个div</h1>
+    <div class="second">
+      <p>p1</p>
+      <p>p2</p>
+      <p>p3</p>
+      <ul>
+        <li><p>p4</p></li>
+        <li><p>p5</p></li>
+        <li><p>p6</p></li>
+      </ul>
+    </div>
+
+    <h1>表格的隔行变色</h1>
+    <table>
+      <!--表格的头-->
+      <thead>
+        <tr>
+          <!--字体加粗-->
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <!--表格的主体-->
+      <tbody>
+        <tr align="center">
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td align="center">1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>总人数：</td>
+          <td colspan="3">4</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

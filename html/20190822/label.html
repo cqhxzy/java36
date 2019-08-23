@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 500px;
+      }
+      table,
+      td,
+      th {
+        border: 1px solid #000;
+        border-collapse: collapse; /*相邻边框合并*/
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#" method="POST">
+      <table>
+        <caption>
+          <h1>用户登录</h1>
+        </caption>
+        <tbody>
+            <tr>
+                <td><label for="userName">用户名</label></td>
+                <td>
+                    <input type="text" name="userName" id="userName" placeholder="请输入用户名">
+                </td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td>
+                    <input type="password" name="userPwd" placeholder="请输入密码">
+                </td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>
+                    <label><input type="radio" name="sex"> 男</label>
+                    <label><input type="radio" name="sex"> 女</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">提交</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>
