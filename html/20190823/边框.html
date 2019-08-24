@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        div:first-of-type{
+            /* border: 10px solid red; */
+            border-width: 10px;
+            border-style: solid;
+            /* border-color: transparent;4个边的边框颜色为透明色 */
+            border-top-color: red;
+            border-right-color: green;
+            border-bottom-color: aqua;
+            border-left-color: #000;
+        }
+
+        span.arrow{
+            display: block;
+            border: 10px solid transparent;
+            width: 0px;
+            height: 0px;
+            /* border-left-color: #000; */
+            border-bottom-color: #000;
+            border-right-color: #000;
+            /*旋转角度*/
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <span class="arrow"></span>
+</body>
+</html>
