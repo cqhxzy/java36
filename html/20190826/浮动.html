@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            /*使container中页面的正中间显示*/
+            margin: 0 auto;
+
+            background-color: #ccc;
+            color: red;
+            padding: 5px 10px;
+        }
+        .container div{
+            height: 50px;
+            margin: 10px 0px;
+            border: 1px dashed black;
+        }
+
+        .container div:nth-of-type(3){
+            float: left;/*向左浮动*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+        <div>div4</div>
+    </div>
+</body>
+</html>
