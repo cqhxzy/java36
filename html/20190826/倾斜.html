@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            margin: 0 auto;
+        }
+      .container div {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        background-color: #ccc;
+      }
+      /*使图片自动的填充到div中去*/
+      img {
+        /*img标签的显示尺寸默认为该图片的原始大小*/
+        width: 100%; /*是图片的宽度为父级元素的宽度的100% */
+        /* width: inherit; 使图片的尺寸继承自父级元素 */
+      }
+
+      .container div:first-of-type:hover {
+        transform: skewX(45deg);
+      }
+
+      .container div:nth-of-type(2):hover {
+        transform: skewY(45deg);
+      }
+      .container div:nth-of-type(3):hover {
+        transform: skew(15deg, 45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+            <h1>沿X轴倾斜</h1>
+            <div>
+              <img class="scale1" src="img/1.jpg" />
+            </div>
+            <h1>沿Y轴倾斜</h1>
+            <div>
+              <img class="scale1" src="img/1.jpg" />
+            </div>
+        
+            <h1>X轴和Y轴都倾斜</h1>
+            <div>
+              <img class="scale1" src="img/1.jpg" />
+            </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        background-color: #ccc;
+
+      }
+      /*使图片自动的填充到div中去*/
+      img {
+        /*img标签的显示尺寸默认为该图片的原始大小*/
+        width: 100%;/*是图片的宽度为父级元素的宽度的100% */
+        /* width: inherit; 使图片的尺寸继承自父级元素 */
+        /*为变形添加过渡样式*/
+        transition: transform 0.2s linear;
+      }
+      .scale1:hover {
+        transform: scale(0.8);
+      }
+      .scale2:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>缩小</h1>
+    <div>
+      <img class="scale1" src="img/1.jpg" />
+    </div>
+    <h1>放大</h1>
+    <div>
+      <img class="scale2" src="img/1.jpg" />
+    </div>
+  </body>
+</html>
