@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 550px;
+            height: 500px;
+            display: flex;/*弹性布局的容器*/
+            background-color: lightgray;
+            flex-direction: row;/*设置主轴方向*/
+            flex-wrap:wrap; /*flex项换行方式*/
+            /*设置主轴方向的对齐方式*/
+            justify-content:space-evenly;
+
+            /*设置交叉轴方向的对齐方式*/
+            align-items: center;
+            /*当交叉轴有多余空间时，用于设置多余空间*/
+            align-content: stretch;
+        }
+
+        .container div{
+            width: 100px;
+            height: 100px;
+            /* margin: 5px; */
+            border: 1px dashed #000;
+            box-sizing: border-box;
+        }
+        .container div:nth-last-of-type(1){
+            background-color: pink;
+        }
+        .container div:nth-last-of-type(2){
+            background-color: lightseagreen;
+        }
+        .container div:nth-last-of-type(3){
+            background-color: yellowgreen;
+        }
+        .container div:nth-last-of-type(4){
+            background-color:lightsalmon;
+        }
+        .container div:nth-last-of-type(5){
+            background-color:lightblue;
+        }
+        .container div:nth-last-of-type(6){
+            background-color:lightskyblue;
+        }
+        .container div:nth-last-of-type(7){
+            background-color:lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+        <div>div4</div>
+        <div>div5</div>
+        <div>div6</div>
+        <div>div7</div>
+    </div>
+</body>
+</html>
