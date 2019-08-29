@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        function test1(){
+            alert("我是提示框");
+            console.log("你点击了确定按钮");
+        }
+
+        function test2(){
+            let str = prompt("请输入你的内容"); //接收用户的输入，并保存到str中
+            console.log('您输入的内容为:' + str); // "" 和 null的区别
+        }
+
+        function test3(){
+            let result = confirm("确定要这么做吗？");
+            if(result){
+                alert('你点了确定');
+            } else {
+                alert('你点了取消');
+            }
+        }
+
+        /*
+            利用这3个函数实现四则运算：
+            在页面中接收用户输入第一个数
+            接收用户输入运算符
+            接收用户输入第二个数
+            计算结果，并通过函数显示结果
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

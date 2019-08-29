@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var i = 10; //全局变量
+
+        function test1(){
+            console.log("i:" + i);
+        }
+
+        //test1();//执行函数
+
+        function test3(){ //声明函数
+            //在本代码块内，如果循环变量n已var声明，则n的作用域提升为整个test3()代码块
+            for(var n = 0;n < 10;n++){
+                //循环10次
+            }
+            console.log(n);
+        }
+
+        //test3(); //执行函数
+
+        //立即执行函数
+        (function(){
+            for(var n = 0;n < 10;n++){
+                //循环10次
+            }
+            console.log('var声明的n:' + n);
+        })(); //声明后立即执行
+
+        (function(){
+            for(let n = 0;n < 10;n++){
+                //循环10次
+            }
+            console.log('let声明的n:' + n);
+        })();
+
+        // function outer() {
+        //     var  a = '变量1';
+        //     console.log(this);
+        //     var  inner = function () {
+        //         console.log(this);
+        //         console.info(a);
+        //     }
+        //     return inner    // inner 就是一个闭包函数，因为他能够访问到outer函数的作用域
+        // }
+        // //outer();
+
+        // var obj = {//声明一个对象可以直接通过{属性1:值,属性2:值}
+        //     a:10,
+        //     b:'abc',
+        //     m:function(){ //m是一个函数
+        //         console.log(this);
+        //     }
+        // };
+        // obj.m();
+
+        // function test2(){ //闭包
+        //     var result = [];//js中数组能够自动扩容
+        //     for(var i = 0; i<10; i++){ //循环10次
+        //         result[i] = function (num) { //立即执行函数
+        //             return function(){
+        //                 console.info("当前i的值：" + num);
+        //             }
+        //         }(i);
+        //     }
+        //     return result;
+        // }
+
+        // var result = test2();
+        // console.log(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
