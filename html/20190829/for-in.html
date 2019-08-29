@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        let arr = ['a','b','c'];
+        arr.push('d');
+
+        //console.log(arr.length);
+        console.log(arr); //直接输出数组
+
+        let stu = {
+            stuNo:1001,
+            stuName:'张三',
+            stuAge:18,
+            print:function(){
+                console.log("学号：" + this.stuNo + ",姓名：" + this.stuName + ",年龄：" + this.stuAge);
+            }
+        };
+        console.log(stu); //直接输出对象
+
+        /*
+            let:数据类型
+            item：每次遍历时，arr集合中的每个元素的下标
+            arr：要被遍历的集合或对象
+        */
+        for(let item in arr){
+            //console.log(item);
+            console.log(arr[item]); //数组[下标] 可以访问元素或者为元素设置值
+        }
+        console.log('------------------------------');
+        for(let item in stu){   //遍历对象
+            //console.log(item); //item为对象具备的属性
+            let result = stu[item];
+            console.log(result);
+        }
+
+        let obj = {}; //一个空的对象
+        obj.name='test1';  //向obj中添加属性
+        obj.age=18;
+    
+        console.log(obj);        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

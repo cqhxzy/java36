@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    function doSomething(){
+        
+    }
+    doSomething.prototype.foo = "bar";
+    var doSomeInstancing = new doSomething();
+    doSomeInstancing.prop = "some value";
+
+    console.log(doSomeInstancing);
+    console.log(doSomething.prototype);
+
+    console.log("doSomeInstancing.prop:      " + doSomeInstancing.prop);
+    console.log("doSomeInstancing.foo:       " + doSomeInstancing.foo);
+    console.log("doSomething.prop:           " + doSomething.prop);
+    console.log("doSomething.foo:            " + doSomething.foo);
+    console.log("doSomething.prototype.prop: " + doSomething.prototype.prop);
+    console.log("doSomething.prototype.foo:  " + doSomething.prototype.foo);
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
