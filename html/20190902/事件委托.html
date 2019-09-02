@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            let parent = document.getElementById("parent-list");
+            //console.log(parent);
+            parent.addEventListener('click',function(e){
+                console.log(e);
+                //console.log(e.target.nodeName);
+                if(e.target && e.target.nodeName == 'LI'){ //判断用户点击的是否为LI标签
+                    let id = e.target.id;  //获取目标对象的id属性
+                    let text = e.target.innerText; //获取目标对象的文本
+                    console.log('id:' + id + ',text:' + text);
+                }
+            });
+        }
+
+        function fn_test(a){
+            //假设a为用户姓名
+            
+            
+            // var userName;
+            // if(a){  //如果参数为undefined，在if判断时，结果为false
+            //     userName = a;
+            // } else {
+            //     userName = '未定义';
+            // }
+
+            let userName = a || '未定义'; //为userName设置默认值
+            console.log("userName:" + userName);
+        }
+    </script>
+</head>
+<body>
+    <ul id="parent-list">
+            <li id="post-1">Item 1</li>
+            <li id="post-2">Item 2</li>
+            <li id="post-3">Item 3</li>
+            <li id="post-4">Item 4</li>
+            <li id="post-5">Item 5</li>
+            <li id="post-6">Item 6</li>
+        </ul>
+</body>
+</html>

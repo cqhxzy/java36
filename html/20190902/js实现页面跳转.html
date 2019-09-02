@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function fn_click(){
+            alert('你点击了按钮');
+            //跳转页面
+            window.location.href = 'https://www.baidu.com';
+        }
+
+        function fn_reload(){
+            if(confirm('你即将要刷新页面')){
+                window.location.reload();
+            }
+        }
+
+        window.onload=function(){
+            console.log('浏览器加载页面完成');
+        }
+    </script>
+</head>
+<body>
+    <button onclick="fn_click()">百度一下</button>
+    <button onclick="fn_reload()">刷新页面</button>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            //根据标签的id获取标签对象,id在页面中是唯一的
+            var userName = document.getElementById('userName');
+            console.log(userName);
+
+            //根据标签的name属性获取标签的集合
+            var sex = document.getElementsByName('sex');
+            console.log(sex);
+
+            //根据标签名获取标签的对象集合
+            var inputs = document.getElementsByTagName('input');
+            console.log(inputs);
+
+            //获取页面中第一个匹配到的元素
+            var q_input = document.querySelector('.sex');
+            console.log(q_input);
+
+            var q_inputs = document.querySelectorAll('.sex');
+            console.log(q_inputs);
+        }
+    </script>
+</head>
+<body>
+    <form action="#">
+        <p>
+            <input type="text" name="userName" id="userName" class="sex">
+        </p>
+        <p>
+            <input type="radio" name="sex" id="m" class="sex"> male
+            <input type="radio" name="sex" id="f" class="sex"> female
+        </p>
+    </form>
+</body>
+</html>
