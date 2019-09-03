@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onscroll = function(){
+            var sTop=document.documentElement.scrollTop||document.body.scrollTop;
+            //console.log(sTop);
+
+            let ad = document.querySelector('.ad');
+            // console.log("offsetLeft:" + ad.offsetLeft);
+            // console.log("offsetTop:" + ad.offsetTop);
+            // console.log("offsetWidth:" + ad.offsetWidth);
+            // console.log("scrollTop:" + ad.scrollTop);
+            // console.log("scrollLeft:" + ad.scrollLeft);
+            // console.log("clientWidth:" + ad.clientWidth);
+            // console.log("clientHeight:" + ad.clientHeight);
+
+            ad.style.top = sTop + 50 + 'px';
+        }
+
+        window.onload = function(){
+            let span = document.querySelector('.ad span');
+            span.addEventListener('click',function(e){
+                span.parentNode.style.display = 'none'; /*隐藏父级元素*/
+                setTimeout(function(){
+                    span.parentNode.style.display = 'block';
+                },5000)
+            });
+        }
+    </script>
+    <style>
+        .ad{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            padding: 10px;
+            border: 5px solid transparent;
+        }
+
+        .ad span{
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: transparent url(img/close.jpg) no-repeat 0 0;
+            width: 13px;
+            height: 13px;
+            cursor: pointer;/*鼠标悬浮，成手形*/
+        }
+    </style>
+</head>
+<body style="height: 3000px">
+    <div class="ad">
+        <span></span>
+    </div>
+</body>
+</html>
