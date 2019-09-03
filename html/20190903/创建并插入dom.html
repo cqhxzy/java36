@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+
+            let btnadd = document.querySelector('#btnadd');
+            btnadd.addEventListener('click',function(){
+
+                let img = document.createElement('img');
+                img.setAttribute('src','img/dog.jpg');
+                img.setAttribute('title','我和狗狗一起生活');
+                console.log(img);
+
+                let wrap = document.querySelector("#wrap");
+                let mai = document.querySelector("#mai");
+                //将创建的img标签插入到wrap中
+
+                //wrap.append(img);  //在末尾可以插入一个数组
+                //wrap.appendChild(img); //在末尾插入一个对象
+                wrap.insertBefore(img,mai); //将img插入到mai之前
+            });
+
+
+            let btnremove = document.querySelector('#btnremove');
+            btnremove.addEventListener('click',function(){
+                let wrap = document.querySelector("#wrap");
+                let lastElementChild = wrap.lastElementChild; //删除wrap中最后一个节点
+
+                wrap.removeChild(lastElementChild);
+            });
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btnadd">插入图片</button>
+    <button id="btnremove">通过父级节点删除子节点</button>
+    <div id="wrap">
+        <img src="img/mai.jpg" id="mai" alt="">
+    </div>
+</body>
+</html>
