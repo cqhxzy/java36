@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--很多插件都是基于jquery开发，因此在使用插件之前必须先导入jquery-->
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        /*
+            使用jquery
+            jQuery或$都代表了jquery的对象
+        */
+        //console.log(jQuery);
+        //console.log($);
+        
+        /*
+            jQuery(选择器);
+            $(选择器);
+
+            jquery为元素绑定事件，必须得在页面完成加载后实现。
+            window.onload ;  浏览器加载完成后触发的事件
+
+            jquery也提供了很多的事件，JavaScript中的事件以on开头。  单击事件，onclick
+                    通过addEventListener('type')
+                    btn.addEventListener('click',function(){});
+            jquery中的事件名和js中的一致，但是去除了on
+                $('选择器').click();  //为选择器匹配的标签绑定单击事件
+
+            
+            jquery的浏览器加载完成后触发的事件能够写多个，并且多个都能够执行
+            window.onload只能写一个，如果有多个，按照书写顺序，只有最后一个生效
+
+            window.onload加载完html,css,js,媒体资源后触发
+            jquery的ready仅在加载完页面所需基本结构后就能够触发。 html,css,js
+        */
+
+        var i = 0;
+
+       window.onload=function(){
+           i += 10;
+           console.log(i);
+           console.log('window.onload的浏览器加载完触发的事件1');
+       }
+
+       window.onload=function(){
+           i+=10;
+           console.log(i);
+           console.log('window.onload的浏览器加载完触发的事件2');
+       }
+
+       /*jquery中的页面加载完成后触发的事件*/
+       $(document).ready(function(){
+            console.log('jquery的浏览器加载完触发的事件');
+       });
+
+       $(function(){
+            console.log('jquery的浏览器加载完触发的事件');
+       });
+
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

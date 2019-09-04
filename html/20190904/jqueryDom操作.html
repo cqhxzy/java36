@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+
+            $("#btn1").click(function(){
+                //创建节点
+                let $p = $("<p title='abc'>abc</p>");
+                let title = "图书";
+                let str = `<li>
+                            <div>
+                                <img src="images/tou01.jpg" />
+                            </div>
+                            <h1>${title}</h1>
+                            <p>
+                                <span>板块：电子书籍</span>
+                                <span>发表时间：2019-09-04 15:46</span>
+                                <a href="#">删除</a>
+                            </p>
+                        </li>`
+
+                $(".wrap").append(str);
+
+                //let str = '<p style="color:red;font-weigth:bold;">abc</p>';
+                //$(".wrap").text(str);
+                //$(".wrap").html(str);
+
+            });
+            $("#btn2").click(function(){
+                //$(".wrap").empty();
+                $(".wrap").html("");
+            });
+
+            $("#btn3").click(function(){
+                //匹配到.wrap中最后一个p，删掉
+                $('.wrap p:last').remove();
+            });
+
+            $("#btn4").click(function(){
+                let val = $("#userName").val(); //没有参数，获取值
+                alert(val);
+            });
+            $("#btn5").click(function(){
+                let oldPwd = $("#userPwd").val();
+                $("#userPwd").val('654321'); //没有参数，获取值
+                alert('原密码：' + oldPwd + ',新密码：' + $("#userPwd").val());
+            });
+            $("#btn6").click(function(){
+                //获取被checked的单选框的value值
+                let val = $(":radio:checked").val();
+                alert(val);
+
+                $("input[value=男]").prop('checked',true);
+                console.log($("input[value=男]").prop('checked'));
+            });
+
+            $("#btn7").click(function(){
+                let chekced = $(":checkbox").prop('checked');
+                $(":checkbox").prop('checked',!chekced);
+            });
+
+            /*事件捕获机制*/
+            $(".wrap").on('click','p',function(){
+                alert('你点击了p标签');
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <button id="btn1">新增节点</button>
+    <button id="btn2">清空内容</button>
+    <button id="btn3">删除最后一个p</button>
+    <button id="btn4">获取文本框的value值</button>
+    <button id="btn5">为密码框设置值</button>
+    <button id="btn6">获取被选中的单选框</button>
+    <button id="btn7">设置复选框全选中</button>
+    <div class="wrap"></div>
+    <form action="#">
+        <input type="text" name="" id="userName" value="text1">
+        <input type="password" name="" id="userPwd" value="123456">
+        <label><input type="radio" name="sex" id="" value="男"> 男</label>
+        <label><input type="radio" name="sex" id="" checked value="女"> 女</label>
+
+        <label><input type="checkbox" name="ch" id="" value="1"> 1</label>
+        <label><input type="checkbox" name="ch" id="" value="2"> 2</label>
+        <label><input type="checkbox" name="ch" id="" value="3"> 3</label>
+        <label><input type="checkbox" name="ch" id="" value="4"> 4</label>
+    </form>
+</body>
+</html>

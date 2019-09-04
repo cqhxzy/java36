@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            /*获取页面中id为btn1的元素，并返回jquery对象*/
+            //为页面中id为btn1的按钮绑定单击事件
+            $("#btn1").click(function(e){
+                let $div1 = $("#div1");
+                //console.log($div1.html());  //html是把标签都获取到
+                console.log($div1.text());   //text只返回文本
+            });
+
+
+            $("#btn2").click(function(){
+                let $div = $("div");
+                //console.log($div.length);
+                $div.html('哈哈哈哈哈');
+            });
+
+            $("#btn3").click(function(){
+                let $div = $(".div2");
+                $div.html('哈哈哈哈哈');
+            });
+
+
+            //console.log($('*'));
+
+            $("#btn4").click(function(){
+                let $div = $("#div3,.div2"); //同时匹配id为div1及类名为div2的标签
+                $div.html('嘻嘻嘻嘻嘻');
+            });
+
+            console.log('-------过滤选择器-------');
+            console.log('-------:first-------');
+            console.log($("li:first"));
+            console.log('-------:last-------');
+            console.log($("li:last"));
+            console.log('-------:eq()-------');
+            console.log($("li:eq(1)"));
+            console.log('-------:gt()-------');
+            console.log($("li:gt(2)"));
+            console.log('-------:lt()-------');
+            console.log($("li:lt(2)"));
+            console.log('-------:not(selector)-------');
+            //console.log($("li:not(:first)"));
+            //console.log($("li:not(:eq(2))"));
+            console.log($("li:not(.aaa,:eq(0))"));
+
+            console.log('-------:even-------');
+            console.log($("li:even"));
+            console.log('-------:odd-------');
+            console.log($("li:odd"));
+
+
+            console.log('-------:checked-------');
+            console.log($(":checkbox:checked"));
+        });
+
+
+    </script>
+</head>
+<body>
+    <button id="btn1">获取id为div1的标签对象</button>
+    <button id="btn2">标签选择器</button>
+    <button id="btn3">类选择器</button>
+    <button id="btn4">组合选择器</button>
+    <div id="div1">
+        <span style="color: red">abc</span>
+    </div>
+    <div id="div2" class="div2"></div>
+    <div id="div3" class="div3"></div>
+    <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li class="aaa">list item 3</li>
+        <li>list item 4</li>
+        <li>list item 5</li>
+    </ul>
+    <p>
+        <input type="checkbox" name="n" checked id=""> 1
+        <input type="checkbox" name="n" id=""> 2
+        <input type="checkbox" name="n" checked id=""> 3
+        <input type="checkbox" name="n" id=""> 4
+    </p>
+</body>
+</html>
