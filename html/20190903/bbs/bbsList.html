@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>课工场论坛列表</title>
+    <link href="css/bbs.css" rel="stylesheet">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+
+            $(".bbs>header>span").click(function(){
+                /*
+                    jquery修改样式有两种方式
+                        1.addClass(类选择器)   为jquery对象增加类选择器
+                            removeClass(类选择器) 移除类选择器 
+                        2.css({css对象});  通过行内样式的方式为匹配的标签设置样式
+                            css对象中已属性：值的形式组成
+                            如果设置的样式只有一条，则直接属性，值使用css函数
+
+                            $obj.css("color","red");  为对象设置字体颜色为红色
+                            $obj.css({"color":"red","font-size":"18px"});
+                        3.通过show(number) 函数使隐藏的显示
+                                fast:快速显示
+                                normal：正常速度
+                                slow：慢速显示
+                                number：具体的一个数值，在多少毫秒内显示
+                            通过hide(fast|normal|slow|number) 函数使显示的隐藏
+                */
+                //$("div.post").css('display','block');
+                $("div.post").show();
+            });
+
+            $(".btn").click(()=>{
+                let title = $(".title").val();
+                let content = $(".content").val();
+                let select = $(".post select option:selected").text();
+
+                //非空验证
+                // if(title == ''){
+                //     alert('请输入标题');
+                //     return;
+                // }
+                // if($(".post select").val() == -1){
+                //     alert('请选择板块');
+                //     return;
+                // }
+                // if(content == ''){
+                //     alert('请输入内容');
+                //     return;
+                // }
+
+                let flag = true; //假设验证通过
+                /*遍历jquery选择器匹配的所有的标签*/
+                $(":text,:password,.content,select").each((index,element) => {
+
+                    //console.log(element.tagName);
+                    if(element.tagName == 'SELECT'){
+                        if($(element).val() == -1){
+                            let title = $(element).prev().text();
+                            alert('请选择' + title);
+                            flag = false;
+                            return false;
+                        }
+                    }
+
+                    /*
+                        index:当前元素的下标
+                        element：它不是jquery对象，而是dom对象
+                    */
+                    let val = $(element).val(); //得到当前遍历的表单元素的value值
+                    if(val == ''){
+                        let title = $(element).prev().text();
+                        flag = false;
+                        alert('请输入' + title);
+                        $(element).focus(); //使当前表单元素获得焦点
+                        return false; //退出循环，类似于break
+                    }
+                });
+                if(!flag) return; //提前结束方法
+
+                let images = ['tou01.jpg','tou02.jpg','tou03.jpg','tou04.jpg'];
+                let ran = Math.floor(Math.random() * images.length);
+                let time = new Date();
+                let year = time.getFullYear();
+                let month = time.getMonth() + 1;
+                let date = time.getDate();
+                let hours = time.getHours();
+                let minutes = time.getMinutes();
+                let time_str = year + '-' + month + '-' + date + ' ' + hours + ':' + minutes;
+
+                let template = `<li>
+                                    <div><img src="images/${images[ran]}"></div>
+                                    <h1>${title}</h1>
+                                    <p>
+                                        <span>版块：${select}</span>
+                                        <span>发表时间：${time_str}</span>
+                                        <a href='#'>删除</a>
+                                    </p>
+                                </li>`;
+                $('section ul').append($(template));
+
+                //清空本次填写的内容
+                // $(".title").val('');
+                // $(".content").val('');
+                $(":text,:password,.content").val(''); //内部通过隐式迭代的方式修改val
+                $(".post select").val('-1');
+
+                //隐藏发布
+                $("div.post").hide();
+            });
+
+            $("section ul").on('click','li p a',(e)=>{
+                //匹配到当前被点击的元素
+                //console.log( e.target );
+                $(e.target).parents("li").remove();
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="bbs">
+    <header><span>我要发帖</span></header>
+    <section>
+        <ul>
+			<!--<li>
+				<div><img src="images/tou03.jpg"></div>
+				<h1>我是标题</h1>
+				<p><span>版块：电子书籍</span><span>发表时间：2018-6-11 14:43</span></p>
+			</li>
+			-->
+		</ul>
+    </section>
+    <div class="post">
+        <div>
+                <label for="title">标题</label><input id="title" class="title" placeholder="请输入标题（1-50个字符）">
+        </div>
+        <div>
+                <label for="bk">所属版块</label><select id="bk"><option value="-1">请选择版块</option><option value="1">电子书籍</option><option value="2">新课来了</option><option value="3">新手报到</option><option value="4">职业规划</option></select>
+        </div>
+        <div>
+                <label for="content">内容</label><textarea class="content" id="content"></textarea>
+        </div>
+        
+        <input class="btn" value="发布" type="button">
+    </div>
+</div>
+</body>
+</html>
