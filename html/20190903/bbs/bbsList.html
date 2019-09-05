@@ -31,10 +31,7 @@
             });
 
             $(".btn").click(()=>{
-                let title = $(".title").val();
-                let content = $(".content").val();
-                let select = $(".post select option:selected").text();
-
+                
                 //非空验证
                 // if(title == ''){
                 //     alert('请输入标题');
@@ -49,34 +46,82 @@
                 //     return;
                 // }
 
-                let flag = true; //假设验证通过
-                /*遍历jquery选择器匹配的所有的标签*/
-                $(":text,:password,.content,select").each((index,element) => {
+                let flag = validate();
 
-                    //console.log(element.tagName);
-                    if(element.tagName == 'SELECT'){
-                        if($(element).val() == -1){
-                            let title = $(element).prev().text();
-                            alert('请选择' + title);
-                            flag = false;
-                            return false;
-                        }
+                submit(flag);
+            });
+
+            $("section ul").on('click','li p a',(e)=>{
+                //匹配到当前被点击的元素
+                //console.log( e.target );
+                $(e.target).parents("li").remove();
+            });
+
+            // $(":text,:password,.content").keypress(function(e){
+            //     let keyCode = e.keyCode; //对应键盘按键的ASCII码。65:A  97:a  13:ENTER
+            //     if(keyCode == 13){
+            //        $('.btn').trigger('click'); //使.btn触发单击事件
+            //     }
+            // });
+            // $("select").keypress(function(e){
+            //     e.preventDefault();
+            //     let keyCode = e.keyCode; //对应键盘按键的ASCII码。65:A  97:a  13:ENTER
+            //     if(keyCode == 13){
+            //         $('.btn').trigger('click');
+            //     }
+            // });
+
+            $(document).keypress(function(e){
+                //onsole.log(e.keyCode);
+                if($('.post').is(':visible')){
+                    if(e.keyCode == 13){
+                        //$('.btn').trigger('click');  //触发.btn的单击事件
+                        let flag = validate();
+                        submit(flag);
                     }
+                }
+            })
+        });
 
-                    /*
-                        index:当前元素的下标
-                        element：它不是jquery对象，而是dom对象
-                    */
-                    let val = $(element).val(); //得到当前遍历的表单元素的value值
-                    if(val == ''){
+        /*验证表单*/
+        function validate(){
+            let flag = true; //假设验证通过
+            /*遍历jquery选择器匹配的所有的标签*/
+            $(":text,:password,#content,select").each((index,element) => {
+
+                //console.log(element.tagName);
+                if(element.tagName == 'SELECT'){
+                    if($(element).val() == -1){
                         let title = $(element).prev().text();
+                        alert('请选择' + title);
                         flag = false;
-                        alert('请输入' + title);
-                        $(element).focus(); //使当前表单元素获得焦点
-                        return false; //退出循环，类似于break
+                        $(element).focus();
+                        return false;
                     }
-                });
-                if(!flag) return; //提前结束方法
+                }
+
+                /*
+                    index:当前元素的下标
+                    element：它不是jquery对象，而是dom对象
+                */
+                let val = $(element).val(); //得到当前遍历的表单元素的value值
+                if(val == ''){
+                    let title = $(element).prev().text();
+                    flag = false;
+                    alert('请输入' + title);
+                    $(element).focus(); //使当前表单元素获得焦点
+                    return false; //退出循环，类似于break
+                }
+            });
+            return flag;
+        }
+
+        function submit(flag){
+            flag = flag || false;
+            let title = $(".title").val();
+            let content = $(".content").val();
+            let select = $(".post select option:selected").text();
+            if(!flag) return; //提前结束方法
 
                 let images = ['tou01.jpg','tou02.jpg','tou03.jpg','tou04.jpg'];
                 let ran = Math.floor(Math.random() * images.length);
@@ -107,14 +152,7 @@
 
                 //隐藏发布
                 $("div.post").hide();
-            });
-
-            $("section ul").on('click','li p a',(e)=>{
-                //匹配到当前被点击的元素
-                //console.log( e.target );
-                $(e.target).parents("li").remove();
-            });
-        });
+        }
     </script>
 </head>
 <body>

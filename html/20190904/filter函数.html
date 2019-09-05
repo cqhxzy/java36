@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+
+            // let li = $("li").filter(":even").filter(":even").filter('.active');
+            // //$("li:gt(2)");
+            // console.log(li);
+
+            /*
+                在具有父子关系的节点中，find子节点
+            */
+            // let obj = $("ul").find(".active");
+            // console.log(obj);
+
+            /*
+                hasClass(className)  判断某个选择器的jquery对象是否包含某个指定的类选择器
+            */
+            console.log($("ul").hasClass('active'));
+            console.log($("li:last").hasClass('active'));
+
+            $('li').click(function(e){
+                //1.移除active
+                $('li').removeClass('active'); //利用隐式迭代，移除所有的标签上的active类选择器
+
+                //2.给被点击了li添加active
+                //$(this).addClass('active');
+                $(e.target).addClass('active');
+            });
+
+            // $('li').click(function(){
+            //     $('li').each(function(index,element){
+            //         if($(this).hasClass('active')){ //如果当前遍历的li具有active类选择器，则移除它
+            //             $(this).removeClass('active');
+            //         }
+            //     });
+            //     $(this).addClass('active');
+            // });
+            
+            $('*').each(function(){
+                if($(this).is('h1')){
+                    console.log($(this).text());
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .active{
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>标题1</h1>
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+    <div></div>
+</body>
+</html>
