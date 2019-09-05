@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+
+            /*
+                1.在用户打开页面后，通过发起异步请求的方式请求data.json得到数据。从而模拟客户端向服务器发起请求，服务向
+                客户端响应数据的过程。
+                2.得到服务器响应的数据
+                3.解析数据，并转换为dom，添加到container
+            */
+            // $.get('js/data.json',function(data){
+
+            //     //console.log(data);
+
+            //     $.each(data,function(index,item){ //遍历json数组
+            //         //console.log(item);
+            //         let id = item['id'];
+            //         let name = item['name'];
+            //         let sex = item['sex'];
+            //         let template = `<div>
+            //                         <h1>${name}</h1>
+            //                         <p>编号：${id}</p>
+            //                         <p>性别：${sex}</p>
+            //                     </div>`;
+            //                     //console.log(template);
+            //         $(".container").append($(template));
+            //     });
+            // })
+
+            $.ajax({
+                url:'js/data.json',  //请求服务器的url地址
+                type:'GET',         //发起的请求方式
+                dataType:'json',     //预计服务器响应的数据的格式
+                beforeSend:function(){
+                    //在发起ajax请求前执行的函数
+                    console.log('--------准备向服务器发起请求----------');
+                },
+                complete:function(){
+                    //不管请求成功或失败后都会执行的函数，请求完成的函数
+                    console.log('--------请求完成-------');
+                },
+                success:function(data){
+                    console.log('--------请求成功，得到服务器响应的数据-------');
+                    //请求成功后执行的回调，data为服务器响应的数据
+                    $.each(data,function(index,item){ //遍历json数组
+                        //console.log(item);
+                        let id = item['id'];
+                        let name = item['name'];
+                        let sex = item['sex'];
+                        let template = `<div>
+                                        <h1>${name}</h1>
+                                        <p>编号：${id}</p>
+                                        <p>性别：${sex}</p>
+                                    </div>`;
+                                    //console.log(template);
+                        $(".container").append($(template));
+                    });
+                },
+                error:function(){
+                    //请求失败后触发的回调函数
+                    console.log('--------请求失败------');
+                }
+            });
+        });
+    </script>
+    <style>
+        .container{
+            width: 500px;
+            margin: 0 auto;
+        }
+        h1,p{
+            margin: 0;
+            padding: 0;
+        }
+        .container div{
+            padding: 5px;
+            border: 1px dashed black;
+            background-color: #ccc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <div>
+            <h1>张三</h1>
+            <p>编号：100</p>
+            <p>性别：男</p>
+        </div> -->
+    </div>
+</body>
+</html>
