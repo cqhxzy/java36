@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        /*
+            n:根据n来获取数组下标的运算符。n的取值范围：0-4
+        */
+        function o(n){
+            let arr = ['+','-'];
+            return arr[n % arr.length || 0];
+        }
+
+        $(()=>{
+
+            let num1 = Math.floor(Math.random() * 100) + 1
+            let num2 = Math.floor(Math.random() * 100) + 1
+            //let operator = o(Math.floor(Math.random() * 2));
+
+            let operator = new Function('n','let arr=["+","-"]; return arr[n % arr.length || 0];')(Math.floor(Math.random() * 2));
+            console.log(operator);
+
+            $('.num1').text(num1);
+            $('.num2').text(num2);
+            $('.operator').text(operator);
+
+            $('#validate').click(function(){
+                let num1 = $('.num1').text();
+                let num2 = $('.num2').text();
+                let operator = $('.operator').text();
+                //5 + 6
+                let result = eval(num1 + operator + num2); //正确结果
+
+                let userInput = $('#result').val();
+                console.log(result);
+                if(userInput != ''){
+                    if(userInput == result){
+                        alert('验证通过');
+                    } else {
+                        alert('验证码错误');
+                    }
+                }
+            });
+
+
+            let str = '{"id":"1001","name":"张三","age":18}';
+            //let stu = eval('('+str+')');  //将jason格式的字符串转换为json对象
+            let stu = JSON.parse(str);  //通过JSON类将json字符串转换为json对象
+            console.log(stu);
+
+            let obj = {id:1001,name:"李四",age:25};
+            let stu_str = JSON.stringify(obj); //通过JSON将js对象转换为json格式的字符串
+            console.log(stu_str);
+        });
+
+        
+    </script>
+</head>
+<body>
+    <div>
+        <span class="num1">5</span>
+        <span class="operator">*</span>
+        <span class="num2">9</span>
+        =
+        <input type="text" id="result">
+    </div>
+    <button id="validate">验证验证码</button>
+</body>
+</html>

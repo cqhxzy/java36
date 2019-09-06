@@ -19,7 +19,7 @@
 
                             $obj.css("color","red");  为对象设置字体颜色为红色
                             $obj.css({"color":"red","font-size":"18px"});
-                        3.通过show(number) 函数使隐藏的显示
+                        3.通过show(fast|normal|slow|number) 函数使隐藏的显示
                                 fast:快速显示
                                 normal：正常速度
                                 slow：慢速显示
@@ -27,7 +27,12 @@
                             通过hide(fast|normal|slow|number) 函数使显示的隐藏
                 */
                 //$("div.post").css('display','block');
-                $("div.post").show();
+                //$("div.post").show('fast');
+                //$("div.post").toggle(); //如果隐藏，则显示，如果显示则隐藏
+                //$("div.post").fadeToggle();
+                $("div.post").slideToggle(function(){
+                    console.log('切换显示隐藏完毕');
+                });
             });
 
             $(".btn").click(()=>{
