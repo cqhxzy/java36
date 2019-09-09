@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .container{
+            width: 500px;
+            /*使container中页面的正中间显示*/
+            margin: 0 auto;
+
+            background-color: #ccc;
+            color: red;
+            padding: 5px 10px;
+        }
+        .container div{
+            height: 50px;
+            margin: 10px 0px;
+            border: 1px dashed black;
+        }
+
+        .container div:nth-of-type(3){
+            position: absolute; /*将第三个div标签设置为绝对定位。*/
+            left: 50%;
+            margin-left: -50px;
+            top: 50%;
+            margin-top: -25px;
+            width: 100px;
+        }
+
+        .container div:nth-of-type(4){
+            position: relative;
+        }
+        .container div:nth-of-type(4) span{
+            display: block;
+            width: 20px;
+            line-height: 20px;
+        }
+        .gift{
+            position: absolute;
+            left: 50px;
+            top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+        
+        <!--相对定位-->
+        <div>
+            div4
+            <!--通过绝对定位为gift指定位置-->
+            <i class="gift fa fa-gift fa-2x"></i>
+        </div>
+    </div>
+</body>
+</html>

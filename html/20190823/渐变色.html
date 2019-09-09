@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        div{
+            width: 300px;
+            height: 20px;
+        }
+        div.progress1{
+            background:linear-gradient(to right,#000,#fff,red);
+        }
+        div.progress2{
+            background:linear-gradient(to bottom,#000,#fff,red);
+        }
+
+        div:nth-of-type(3){
+
+            height: 100px;
+            background:radial-gradient(circle,yellow, red);
+        }
+    </style>
+</head>
+<body>
+    <h1>线性渐变</h1>
+    <div class="progress1"></div>
+    <div class="progress2"></div>
+
+    <h1>径向渐变</h1>
+    <div></div>
+</body>
+</html>

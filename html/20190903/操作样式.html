@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .test{
+            background-color: #ccc;
+            color: rgb(255, 0, 0);
+        }
+        .div1{
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+            let div = document.querySelector('div');
+            //console.log(div.style);
+
+            //获取div标签在页面中的实际样式.只能取
+            let style = document.defaultView.getComputedStyle(div,null);
+            // console.log(style.color)
+            // console.log(style.width);
+
+            //js通过style对象中的属性设置css时，实现原理为为标签设置行内样式
+            //通过js设置样式，样式都是字符串
+            //通过js设置样式，每行代码只能够设置一个样式
+            div.style.color='green';
+            div.style.width = '500px';
+
+            
+
+            let btn = document.querySelector('#addClass');
+            btn.addEventListener('click',function(){
+                div.className = div.className + ' div1';//为div添加div1类选择器
+            });
+
+            let remove = document.querySelector('#removeClass');
+            remove.addEventListener('click',function(){
+                console.log('当前的类选择器：' + div.className);
+                let str = div.className;
+                let indexOf = div.className.indexOf('div1');
+                if(indexOf != -1){
+                    let begin = str.substring(0,indexOf);
+                    let end = str.substring(indexOf +'div1'.length);
+                    let newClass = begin + end;
+                    div.className = newClass.trim();//移除掉所有的类选择器
+                }
+                
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="addClass">添加类选择器</button>
+    <button id="removeClass">移除类选择器</button>
+    <div class="test">
+        hello html
+    </div>
+</body>
+</html>

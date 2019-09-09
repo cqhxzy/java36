@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        function fn_div(){
+            console.log('你点击了div标签');
+        }
+        function fn_p(e){
+            e.stopPropagation();//阻止冒泡
+            console.log('你点击了p标签');
+        }
+
+    </script>
+    <style>
+        p{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div onclick="fn_div()">
+        <p onclick="fn_p(event)"></p>
+
+    </div>
+</body>
+</html>

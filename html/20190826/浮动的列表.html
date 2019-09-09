@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        ul{
+            margin: 0;/*去除外边距*/
+            padding: 0;/*去除内边距*/
+            list-style: none;/*去除项目符号*/
+        }
+        ul li{
+            /*所有的li标签左浮动*/
+            float: left;
+            
+        }
+        a{
+            /*去除a标签的文本修饰*/
+            text-decoration: none;
+            margin: 0 11px;
+            line-height: 40px;
+            color: #333;
+        }
+        a:hover{
+            color: #c81653;
+        }
+
+        .clear{
+            overflow: hidden; /*溢出处理，解决了IE8中显示问题*/
+            zoom: 1;    /*解决IE7中显示问题*/
+        }
+        /*给使用了clear的标签的after元素设置的样式*/
+        .clear::after{
+            content: '';
+            clear: both;/*清除浮动*/
+            /*使after称为块级元素*/
+            display: block;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>横向排列的列表</h1>
+    <ul class="clear">
+      <li>
+        <a href="#">巨人的陨落</a>
+      </li>
+      <li>
+        <a href="#">世界的凛冬</a>
+      </li>
+      <li>
+        <a href="#">永恒的边缘</a>
+      </li>
+      <li>
+        <a href="#">明朝那些事儿</a>
+      </li>
+    </ul>
+    <h1>另外一个标题</h1>
+  </body>
+</html>

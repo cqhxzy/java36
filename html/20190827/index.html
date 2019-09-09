@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 0 auto;
+            height: 300px;;
+        }
+
+        /*布局视口的宽度在300-500像素之间时套用的样式*/
+        @media screen and (min-width:300px) and (max-width:500px) {
+            .box{
+                width: 400px;
+                background-color: #ccc;
+            }
+        }
+        @media screen and (min-width:500px) and (max-width:800px) {
+            .box{
+                width: 700px;
+                background-color: brown;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

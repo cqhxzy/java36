@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function fn_focus(e){
+            console.log(e);
+            console.log('文本框获得焦点')
+        }
+
+        function fn_blur(event){
+            console.log(event);
+            console.log('文本框失去焦点');
+        }
+
+        function fn_keypress(event){
+            console.log(event);
+            //判断用户敲的是否是回车键
+            if(event.keyCode == 13){
+                alert('你点了回车键');
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="#" onsubmit="return false;">
+        <input type="text" onfocus="fn_focus(e)" onblur="fn_blur(event)" onkeypress="fn_keypress(event)" />
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // let intervalId = setInterval(function(){
+        //     console.log(Math.random());
+        // },1000);
+
+        window.onload=function(){
+            let btn = document.querySelector('button');
+            let intervalId;
+
+            btn.addEventListener('click',function(e){
+                //console.log(e.target.getAttribute('state'));
+                //获取button按钮的state属性
+                //如果属性是浏览器内置的，则可以直接通过标签对象获取。example: e.target.id
+                //如果属性是自定义的，则需要通过getAttribute(属性名)获取
+                let state = e.target.getAttribute('state');
+                
+                if(state == '0'){
+                    e.target.innerText = '暂停';
+                    state = 1;
+                    //开启计时器
+                    intervalId = setInterval(function(){
+                        console.log(Math.random());
+                    },1000);
+                } else {
+                    e.target.innerText = '开始';
+                    state = 0;
+                    //清除计时器
+                    clearInterval(intervalId);
+                }
+
+                e.target.setAttribute('state',state);
+            })
+        }
+    </script>
+</head>
+<body>
+    <!--0代表未开始，1代表已开始-->
+    <button state='0' id='btn1'>开始</button>
+</body>
+</html>

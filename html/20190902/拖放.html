@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.container{
+            width: 500px;
+            margin: 0 auto;
+            background: #cccccc;
+        }
+
+        ul{
+            list-style-type: none;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly
+        }
+        li{
+            line-height: 50px;
+            margin: 10px 0px;
+            border: 1px dashed black;
+            transition: background-color,0.5s;
+            width: 100px;
+            text-align: center
+        }
+
+        .ondrag{
+            background: rgba(64, 143, 218, 0.493);
+        }
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("li").prop("draggable",true).on('dragstart',function(e){
+                //e.originalEvent.preventDefault()
+                let data=e.originalEvent.dataTransfer;
+				data.setData('id',e.target.id) ;
+                $(e.target).addClass('ondrag');
+            }).on('drop',function(e){
+					let id=e.originalEvent.dataTransfer.getData('id');
+                    let that = e.target;
+                    let that_txt = $(that).text();
+                    $(that).text($('#' + id).text());
+                    $('#' + id).text(that_txt).removeClass('ondrag');
+                    $(that).addClass('ondrag');
+
+                    setTimeout(
+                        function () {
+                            $(that).removeClass('ondrag');
+                        }
+                    ,300);
+
+                    
+			}).on('dragover',function(e){
+					e.originalEvent.preventDefault(); //必须指定
+			}).each(function(index,ele){
+                $(ele).attr('id','id_' + index);
+            });
+            
+
+        })
+
+        function start(event) {
+            
+            //let txt = $(event.target).attr('target');
+            event.dataTransfer.setData('target',event.target.id);
+
+        }
+        function dragover(event) {
+            //console.log("dragover")
+            event.preventDefault();
+        }
+        function drag(event) {
+            //console.log("drag")
+            event.preventDefault();
+            let t = event.dataTransfer.getData('target');
+            let _target = $(event.target).text();
+            //console.log(t);
+            $(event.target).text($('#'+t).text());
+            $('#'+t).text(_target);
+            
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <!--ondragstart="start(event)" ondragover="dragover(event)" ondrop="drag(event)"-->
+            <li>张三</li>
+            <li>李四</li>
+            <li>王五</li>
+            <li>赵柳</li>
+            <li>张无忌</li>
+            <li>赵敏</li>
+            <li>苏乞儿</li>
+        </ul>
+    </div>
+</body>
+</html>

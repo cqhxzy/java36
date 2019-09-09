@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        let devicePixelRatio = 1 / window.devicePixelRatio;
+        console.log(devicePixelRatio); //输出设备像素比
+
+        console.log("设备像素" + document.documentElement.clientWidth * window.devicePixelRatio);
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    </script>
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box{
+            width: 2rem;
+            height: 2rem;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

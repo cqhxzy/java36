@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 500px;
+      }
+      table,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse; /*边框合并*/
+      }
+    </style>
+    <script>
+        window.onload = function(){
+            let all = document.querySelector("[name='all']");
+            all.addEventListener('change',function(e){
+                //获取当前all是否被选中
+                //console.log(e.target.checked)   获取radio和checkbox是否被选中，通过checked属性实现
+                fn_check(e.target.checked);
+            });
+        }
+
+        function fn_check(checked){
+            /*获取所有的namech的input标签*/
+            let ch = document.getElementsByName('ch');
+            for(let i = 0;i < ch.length;i++){
+                ch[i].checked = checked;
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <label> <input type="checkbox" name="all" id="" /> 全选 </label>
+          </th>
+          <th>
+            姓名
+          </th>
+          <th>
+            年龄
+          </th>
+          <th>
+            性别
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="checkbox" name="ch" id="" />
+          </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="ch" id="" />
+          </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="ch" id="" />
+          </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="ch" id="" />
+          </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="ch" id="" />
+          </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

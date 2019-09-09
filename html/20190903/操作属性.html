@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+
+            //let books = document.getElementsByName('book');
+            // for(let i = 0;i < books.length;i++){
+            //     let input = books[i];
+            //     console.log(input);
+            // }
+            
+
+            let books = document.querySelectorAll('input[name="book"]');
+            for (const key in books) {
+                if (books.hasOwnProperty(key)) { //hasOwnProperty 判断key是否为数组对象自身包含的属性，排除继承的属性
+                    const element = books[key];
+                    //console.log(element);
+                    element.addEventListener('change',function(e){
+                        let src = e.target.value;
+                        let img = document.querySelector("#img");
+                        img.setAttribute('src',src);
+                    });
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    选择你喜欢的数：<label ><input type="radio" name="book" value="img/dog.jpg" >我和狗狗一起活下来</label>
+       <label> <input type="radio" name="book" value="img/mai.jpg" checked   >灰霾来了怎么办</label>
+        <p>
+            <img id="img" />
+        </p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+    
+        /*创建一个类，Person*/
+        function Person(){
+            this.name = null;
+            this.age = 18;
+            this.greeting=function(){
+                //alert('Hi! I\'m ' + this.name + '.');
+            }
+        }
+        //在原型中声明的属性，能够被所有的对象访问
+        Person.prototype.sex = null;
+
+        let p1 = new Person(); //实例化一个对象
+        p1.name = '月月';
+        p1.greeting();
+        p1.sex = '女';
+        p1.phone='123456';
+        console.log(p1);
+
+        let p2 = new Person();
+        p2.name = '小乖';
+        p2.greeting();
+        p2.sex = '男';
+        console.log(p2);
+        
+        
+
+        //console.log(Object.getPrototypeOf(p1));
+        let vf = p2.__proto__.__proto__;
+        console.log(Person.prototype);
+        console.log(vf);
+        
+        const adder = new Function("a", "b", "return a + b");
+        console.log(adder.prototype);
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

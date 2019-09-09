@@ -1,0 +1,93 @@
+body,ul,li,div,p,h1,h2,ol{margin: 0;padding: 0;}
+ul,li,ol{list-style: none;}
+.content{width: 810px; margin: 0 auto;  font-family: "微软雅黑";}
+.logo{margin: 10px 0;}
+.logo span{
+    display: inline-block;
+    float: right;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    background: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.cartList{
+    background: url("../images/shoppingBg.jpg") no-repeat;
+    height: 414px;
+    overflow: hidden;
+}
+.cartList ul{
+    float: right;
+    width: 450px;
+}
+.cartList ul:nth-of-type(1){
+    margin-top: 125px;
+}
+.cartList ul:nth-of-type(2){
+    margin-top:70px;
+}
+.cartList ul li{
+    font-family: "微软雅黑";
+    font-size: 12px;
+    color: #666666;
+    text-align: center;
+    line-height: 25px;
+    float: left;
+}
+.cartList ul li input[name="price"]{
+    border: none;
+    background: transparent;
+    width: 45px;
+    text-align: center;
+}
+.cartList ul li input[name="amount"]{
+    width: 45px;
+    text-align: center;
+    border: 1px solid #999999;
+    border-left: none;
+    border-right: none;
+    height: 21px;
+}
+.cartList ul li input[name="minus"],.cartList ul li input[name="plus"]{
+    height: 25px;
+    border: 1px #999999 solid;
+    width: 25px;
+    text-align: center;
+}
+.cartList ul li:nth-of-type(1){width: 130px;}
+.cartList ul li:nth-of-type(2){width: 100px;}
+.cartList ul li:nth-of-type(3){width: 130px;}
+.cartList ul li p{cursor: pointer;}
+.cartList ol{
+    float: right;
+    clear: both;
+    margin-top: 60px;
+}
+.cartList ol li{
+    float: left;
+}
+.cartList ol li:nth-of-type(1){
+    color: #ff0000;
+    width: 120px;
+}
+.cartList ol li span{display: inline-block;
+    float: right;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    background: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-weight: bold;}

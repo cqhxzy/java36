@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+        }
+    </style>
+
+    <script>
+        function fn_changeColor(e){
+            //console.log(e);
+            /*
+                js中，所有能操作的都可以认为是一个对象
+                一个html标签在js中是一个对象
+
+            */
+           let div = e.target; /*获取触发事件的对象*/
+           console.log(e.target);
+            //let ranColor = 'rgb('+ Math.random(255)+','+ Math.random(255)+'，'+ Math.random(255)+')';
+            //console.log(ranColor);
+
+            var rndCol = 'rgb(' + Math.random()*255 + ',' + Math.random()*255 + ',' + Math.random()*255 + ')';
+            /*js中，所有的样式都会去除-，然后通过驼峰命名法命名样式*/
+            div.style.backgroundColor = rndCol;
+        }
+
+        function fn_clicka(e){
+            e.preventDefault(); //阻止a标签的默认行为
+            alert('你点了a标签');
+        }
+    </script>
+
+</head>
+<body>
+    <div onclick="fn_changeColor(event)"></div>
+    <a href="https://www.baidu.com" onclick="fn_clicka(event)">百度一下</a>
+</body>
+</html>

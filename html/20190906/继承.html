@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // /*声明Product类*/
+        // function Product(name, price) {
+        //     this.name = name;
+        //     this.price = price;
+        // }
+
+        // /*声明Food类*/
+        // function Food(name, price) {
+        //     Product.call(this, name, price);
+        //     this.category = 'food';
+        // }
+
+        // console.log(new Food('cheese', 5));
+
+
+        class Product{
+            /*
+                构造函数
+                在Product类中声明name和price有参构造函数
+            */
+            constructor(name,price){
+                this.name = name;  
+                this.price = price;
+            }
+
+            toString(){
+                return 'name:' + this.name + ',price:' + this.price;
+            }
+        }
+
+        class Food extends Product{
+            constructor(name,price,type){
+                super(name,price);
+                //声明自己的属性
+                this.type = type;
+            }
+
+            toString(){
+            return 'name:' + this.name + ',price:' + this.price + ',type:' + this.type;
+            }
+        }
+
+        console.log(new Food('牛肉干',10,'食品').toString());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

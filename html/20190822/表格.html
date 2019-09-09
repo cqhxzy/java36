@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <!--设置网页的编码方式-->
+    <meta charset="UTF-8" />
+    <!--针对移动设备，设置网页的视口大小以及缩放比例-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        table{
+            width: 500px;
+        }
+      table,
+      td,th {
+        border: 1px solid #000;
+        border-collapse: collapse; /*相邻边框合并*/
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>物理表格</h1>
+    <table align="center">
+      <tr>
+        <td rowspan="2">学号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+      </tr>
+      <tr>
+        
+        <td>zhangsan</td>
+        <td>18</td>
+        <td>男</td>
+      </tr>
+      <tr>
+        <td>1001</td>
+        <td>zhangsan</td>
+        <td>18</td>
+        <td>男</td>
+      </tr>
+      <tr>
+        <td>1001</td>
+        <td>zhangsan</td>
+        <td>18</td>
+        <td>男</td>
+      </tr>
+      <tr>
+        <td>1001</td>
+        <td>zhangsan</td>
+        <td>18</td>
+        <td>男</td>
+      </tr>
+    </table>
+
+    <h1>逻辑表格</h1>
+    <table>
+      <!--表格的头-->
+      <thead>
+        <tr>
+          <!--字体加粗-->
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <!--表格的主体-->
+      <tbody>
+        <tr align="center">
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td align="center">1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>zhangsan</td>
+          <td>18</td>
+          <td>男</td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+              <td>总人数：</td>
+              <td colspan="3">4</td>
+          </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

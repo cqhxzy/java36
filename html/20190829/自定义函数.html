@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        /*在js中通过函数来实现自定义的功能,函数相当于java中的方法*/
+        /*
+            function 函数名([形参1[形参n]]){
+                //参数列表没有类型，因为js是弱类型
+
+                //在函数中，return可写可不写。
+                //如果函数需要向调用者返回结果，则使用return 值
+                //如果不需要返回值，则省略return
+                //单独使用return，其含义为退出当前函数，通常和if选择结构搭配使用
+            }
+        */
+        function test1() { //无参无返回值的函数
+            console.log("------------test1---------------");
+        }
+
+        function test2() {
+            console.log('-------------------test2--------------');
+            return 1; //无参数有返回值的函数
+        }
+
+        function test3(num1,num2) { //有参数，无返回值的函数
+            console.log(num1 + num2);
+        }
+
+        function test4(num1,num2){//有参数，有返回值的函数
+            return num1 + num2;
+        }
+
+        function test5(num1,num2){
+            if(num2 == 0){
+                console.log("除数不能为0！");
+                return; //直接退出函数，不再执行return之后的代码
+            }
+            console.log(num1 / num2);
+        }
+
+        test1();//执行test1函数
+        var test2 = test2();
+        console.log(test2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

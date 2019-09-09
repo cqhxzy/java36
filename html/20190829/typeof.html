@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        let i = 10;     //整数
+        let pi = 3.14;  //小数
+        let str = 'hellowrold';  //字符串
+        let flag = false;   //布尔
+        let obj = {};   //对象
+        let arr = [1,2,3,4,5]; //数组
+        let fn = function(){
+            console.log(this);
+        }; //一个函数
+
+        console.log('i:' + typeof(i));
+        console.log('pi:' + typeof(pi));
+        console.log('str:' + typeof(str));
+        console.log('flag:' + typeof(flag));
+        console.log('obj:' + typeof(obj));
+        console.log('arr:' + typeof(arr));
+        console.log('fn:' + typeof(fn));
+
+        function test(){
+            console.log('----------------------------');
+        }
+
+        let a = parseInt('1'); //将字符串的数字转换为整数
+        let b = parseInt('5');
+        let c = a + b;
+        console.log('c:' + c);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

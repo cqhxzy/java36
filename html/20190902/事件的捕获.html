@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            p{
+                width: 100px;
+                height: 100px;
+                background-color: #ccc;
+            }
+            div{
+                width: 200px;
+                height: 200px;
+                background-color: brown;
+            }
+        </style>
+        <script>
+           
+
+            //浏览器加载完后触发的事件
+            window.onload=function(){
+                /*通过事件捕获为页面元素绑定事件*/
+                //1.获取要绑定的页面元素的对象
+                let divs = document.querySelector('div'); //获取页面中所有的div标签'
+                console.log(divs);
+                divs.addEventListener('click',function(){
+                    console.log('你点了div标签');
+                },{capture:true,once:true});
+
+                let ps = document.querySelector('p'); //获取页面中所有的p标签
+                ps.addEventListener('click',function(){
+                    console.log('你点了p标签');
+                },{capture:true,once:true});
+            }
+        </script>
+</head>
+<body>
+    <div>
+        <p></p>
+
+    </div>
+</body>
+</html>

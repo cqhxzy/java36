@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        
+        /*获取当前时间*/
+        function fn_clock(){
+            let weeks = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+            let date = new Date(); // 默认获取系统当前时间
+
+            let year = date.getFullYear(); //获取年份
+            let month = date.getMonth() + 1; //获取月份返回 0-11的值
+            let d = date.getDate(); //获取日期
+
+            let hours = date.getHours(); //小时
+            let minutes = date.getMinutes(); //分钟
+            let seconds = date.getSeconds(); //秒
+
+            let day = date.getDay(); //获取周几
+
+            let div = document.querySelector('div'); //根据标签选择器获取第一个div标签
+            div.innerText = year + '-' + month + '-' + d + " " + hours + ':' + minutes + ':' + seconds + ' ' + weeks[day];
+        }
+
+        window.onload=function(){
+            fn_clock();//浏览器加载完毕后，立即获取当前时间
+            setInterval("fn_clock()",1000);
+        }
+
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

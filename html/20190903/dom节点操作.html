@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        window.onload=function(){
+            // let ul = document.querySelector('ul');
+            // ul.addEventListener('click',function(e){
+
+            //     if(e.target && e.target.nodeName == 'LI'){
+            //         console.log('你点击了li标签');
+            //     }
+
+            // });
+
+            let btn1 = document.querySelector('#btn1');
+            btn1.addEventListener('click',function(e){
+                let li = document.querySelector('li');
+                let parent = li.parentNode;
+                console.log(parent);
+
+                let p_element = li.parentElement;
+                console.log(p_element);
+            });
+
+            let btn2 = document.querySelector('#btn2');
+            btn2.addEventListener('click',function(e){
+                let ul = document.querySelector('ul');
+                let childNodes = ul.childNodes; //返回包括文本节点的所有子节点   NodeList [text,li]
+                console.log(childNodes);
+
+                let children = ul.children; //只返回子级标签节点的集合。HTMLCollection[li,li,li,li]
+                console.log(children);
+            });
+
+            let btn3 = document.querySelector('#btn3');
+            btn3.addEventListener('click',function(e){
+                let ul = document.querySelector('ul');
+                let firstChild = ul.firstChild; //获取第一个孩子,是一个文本text
+                console.log(firstChild);
+
+                let firstElementChild = ul.firstElementChild;
+                console.log(firstElementChild);
+            });
+
+            let btn4 = document.querySelector('#btn4');
+            btn4.addEventListener('click',function(e){
+                let ul = document.querySelector('ul');
+                let lastChild = ul.lastChild; //获取第一个孩子,是一个文本text
+                console.log(lastChild);
+
+                let lastElementChild = ul.lastElementChild;
+                console.log(lastElementChild);
+            });
+
+            let btn5 = document.querySelector('#btn5');
+            btn5.addEventListener('click',function(e){
+                let h1 = document.querySelector('h1');
+                let nextSibling = h1.nextSibling;
+                console.log(nextSibling);
+
+                let nextElementSibling = h1.nextElementSibling;
+                console.log(nextElementSibling);
+            });
+
+            let btn6 = document.querySelector('#btn6');
+            btn6.addEventListener('click',function(e){
+                let div = document.querySelector('div');
+                let previousSibling = div.previousSibling;
+                console.log(previousSibling);
+
+                let previousElementSibling = div.previousElementSibling;
+                console.log(previousElementSibling);
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">获取所有li标签的父级节点</button>
+    <button id="btn2">返回子级节点</button>
+    <button id="btn3">第一个子节点</button>
+    <button id="btn4">最后一个子节点</button>
+    <button id="btn5">获取下一个兄弟节点</button>
+    <button id="btn6">获取上一个兄弟节点</button>
+    <h1>无序列表</h1>
+    <div>
+        <ul>
+            <li>li1</li>
+            <li>li2</li>
+            <li>li3</li>
+            <li>li4</li>
+            <li>li5</li>
+        </ul>
+    </div>
+</body>
+</html>

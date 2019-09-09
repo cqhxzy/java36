@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>完善当当购物车页面</title>
+    <link type="text/css" rel="stylesheet" href="css/cartStyle.css" />
+    <script>
+    
+        window.onload=function(){
+            pay();
+        }
+
+        function mius(e){
+            //console.log(e);
+            let parent = e.parentNode; //得到e的父级节点
+            let children = parent.childNodes;  //在父级节点中获取其所有的子节点
+            //console.log(children);
+            for(let i = 0;i < children.length;i++){
+                let element = children[i];
+                //console.log(element);
+                //console.log(element.name);
+                if(element.name && element.name == 'amount'){
+                    let val = element.value; //获取value值,注意value类型为string
+                    val = parseInt(val);
+                    if(val > 1) val--;  //修改value的值
+                    element.value = val; //将修改后的value值重新赋值给文本框
+
+                    calc(parent);
+                    break;
+                }
+            }
+        }
+        function plus(e){
+            let parent = e.parentNode;
+            let children = parent.childNodes;
+            for(let i = 0;i < children.length;i++){
+                let element = children[i];
+                //console.log(element);
+                //console.log(element.name);
+                if(element.name && element.name == 'amount'){
+                    let val = element.value; //获取value值,注意value类型为string
+                    val = parseInt(val);
+                    val++;  //修改value的值
+                    element.value = val; //将修改后的value值重新赋值给文本框
+
+                    calc(parent);
+                    break;
+                }
+            }
+        }
+
+        /*计算价格*/
+        function calc(t){
+            /*计算价格：
+                1.获取单价
+                2.获取数量
+                3.单价*数量
+                4.将计算出来的结果赋值给ul中第3个li标签的文本
+            */
+            let ul = t.parentNode; //得到ul标签
+            //console.log(ul.children[0].children[0].value);
+            let price = ul.children[0].children[0].value;
+            let amount = ul.children[1].children[1].value;
+            let total = (price * amount).toFixed(2);
+            //console.log(total.toFixed(2));   //将数组四舍五入，保留2位小数
+
+            //innerText会将内容原封不动的显示到网页
+            ul.children[2].innerText = '¥' + total;
+
+            //innerHTML中如果有html代码，js会将html代码渲染到页面中，呈现响应的效果
+            //ul.children[2].innerHTML = '<span class="money">¥' + total + '</span>';
+
+            //总计
+            pay();
+        }
+
+        function pay(){
+            let ul = document.querySelectorAll('.cartList ul');
+            //console.log(ul[0].children);
+            let total = 0;
+            for(let i = 0;i < ul.length;i++){
+                let str = ul[i].children[2].innerText;
+                str = str.substring(1); //第一个字符固定为人民币符号
+                //console.log(str);
+                total += parseFloat(str);
+            }
+            //console.log(total);
+
+            //document.getElementById('totalPrice').innerText = '¥'+total;
+            document.querySelector('#totalPrice').innerText = '¥'+total;
+        }
+    </script>
+
+    <style>
+        span.money{
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="logo">
+        <img src="images/dd_logo.jpg"><span>关闭</span>
+    </div>
+    <div class="cartList">
+        <ul>
+            <li>¥<input type="text" name="price" value="21.90"></li>
+            <li><input type="button" name="minus" value="-" onclick="mius(this)"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(this)"></li>
+            <li id="price0">¥21.90</li>
+            <li><p>移入收藏</p><p>删除</p></li>
+        </ul>
+        <ul>
+            <li>¥<input type="text" name="price" value="24.00"></li>
+            <li><input type="button" name="minus" value="-" onclick="mius(this)"><input type="text" name="amount" value="1"><input type="button" name="plus" value="+" onclick="plus(this)"></li>
+            <li id="price1">¥24.00</li>
+            <li><p>移入收藏</p><p>删除</p></li>
+        </ul>
+        <ol>
+            <li id="totalPrice">&nbsp;</li>
+            <li><span>结 算</span></li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

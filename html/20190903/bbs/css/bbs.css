@@ -1,0 +1,22 @@
+*{margin: 0; padding: 0; font-family: "Arial", "΢���ź�";}
+ul,li{list-style: none;}
+.bbs{margin: 0 auto; width: 600px; position: relative;}
+header{padding: 5px 0; border-bottom: 1px solid #cecece;}
+header span{display:inline-block; width: 220px; height: 50px; color: #fff; background: #009966; font-size: 18px; font-weight: bold; text-align: center;line-height: 50px; border-radius: 8px; cursor: pointer;}
+.post{position: absolute; background: #ffffff; border: 1px #cccccc solid; width: 500px; left: 65px; top:70px; padding: 10px; font-size: 14px; z-index: 999999; display: none;}
+.post .title{width: 450px; height:30px; line-height: 30px; display: block; border: 1px #cecece solid; margin-bottom: 10px;}
+.post select{width: 200px; height: 30px;}
+.post .content{width: 450px; height: 200px; display: block; margin: 10px 0;border: 1px #cecece solid;}
+.post .btn{width: 160px; height: 35px; color: #fff; background: #009966; border: none; font-size: 14px; font-weight: bold; text-align: center; line-height: 35px; border-radius: 8px; cursor: pointer;}
+
+.bbs section ul li{padding: 10px 0; border-bottom: 1px #999999 dashed;
+    overflow: hidden;}
+.bbs section ul li div{float: left; width: 60px; margin-right: 10px;}
+.bbs section ul li div img{ border-radius:50%; width: 60px;}
+.bbs section ul li h1{float: left; width: 520px; font-size: 16px; line-height: 35px;}
+.bbs section ul li p{color: #666666; line-height: 25px; font-size: 12px; }
+.bbs section ul li p span{padding-right:20px;}
+
+.post>div{
+    display: flex;
+}

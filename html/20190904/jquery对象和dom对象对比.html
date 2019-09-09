@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+
+            let dom_div = document.querySelectorAll('div'); //js获取的dom对象
+            let j_div = $('div');   //jquery对象
+            let $_div = $(dom_div); //将dom对象转换为jquery对象
+            
+            //jquery对象  !=  dom对象
+            //jquery对象中封装了dom对象
+            //jquery选择器在匹配的dom元素时，通过一个集合维护了原生的dom对象
+            //我们在使用jquery时，操作的jquery提供的函数及属性
+
+            console.log(dom_div);
+            console.log(j_div);
+            console.log($_div);
+
+        });
+    </script>
+</head>
+<body>
+    <div>abc</div>
+    <div>efg</div>
+</body>
+</html>
