@@ -17,4 +17,5 @@ public interface UserMapper {
 
     @Select("select count(0) from tab_user where account=#{account}")
     int validateUserAccount(@Param("account") String account);
+
 }

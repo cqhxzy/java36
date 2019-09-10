@@ -31,10 +31,24 @@ public class IndexController {
 
     @PostMapping("/register")
     public Object register(User user){
-        int add = service.add(user);
         Map result = new HashMap();
-        result.put("isSuccess",add != 0);
+        if (user.getAccount() == null || user.getAccount() == "") {
+            result.put("isSuccess",false);
+            result.put("msg", "请完善注册信息");
+            return result;
+        }
+        int i = service.validateUserAccount(user.getAccount());
 
+        if (i != 0) {
+            result.put("isSuccess",false);
+            result.put("msg", "用户名已存在");
+            return result;
+        }
+
+        int add = service.add(user);
+
+        result.put("isSuccess",add != 0);
+        result.put("msg", "注册成功");
         return result;
     }
 
