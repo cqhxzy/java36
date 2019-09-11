@@ -31,7 +31,9 @@ public class TestStatement {
             * DCL: 对应数据库控制语言
             * */
 
-            String insert_sql = "insert into tab_course (courseName) values ('数学')";
+            String courseName = "数学";
+            String insert_sql = "insert into tab_course (courseName) values ('"+courseName+"')";
+            System.out.println(insert_sql);
             String update_sql = "update `tab_course` SET `courseName` = '英语' WHERE `courseName` = 'abc'";
             String delete_sql = "delete from `tab_course` where courseId = 8";
 
