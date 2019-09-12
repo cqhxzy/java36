@@ -1,16 +1,21 @@
 package day2.util;
 
+import day2.entity.Student;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.Converter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.logging.Level.parse;
 
 public class DbUtils {
     /*数据库连接字符串*/
@@ -168,12 +173,37 @@ public class DbUtils {
             rs = pstmt.executeQuery();
             ResultSetMetaData metaData = rs.getMetaData(); //得到sql的元信息
 
+            /*
+            * 注册自定义的转换器：
+            *   BeanUtils.setProperty在为对象赋值的时候，会将值根据属性的类型，从ConverterUtilsBean中的集合中获取对应的转换器
+            *   根据转换器，就能够将不同的类型转换为对应Java Bean中属性的类型。
+            *   ConvertUtils.register(Converter,Class)
+            *           注册自定义的转换器。
+            *            Converter是转换器的实例，会在 BeanUtils.setProperty中被调用
+            *            Class对应的就是java Bean的属性的类型。（特殊的类型需要自定义转换器）
+            * */
+            ConvertUtils.register((object,value)->{
+                //内部类：value接收data转换成string类型
+                //SimpleDateFormat中的parse方法可以  把String型的字符串转换成特定格式的java.util.Date类
+                if (value != null) {
+                    try {
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Date parse = simpleDateFormat.parse(value.toString());
+                        return parse;
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return null;
+            }, java.util.Date.class);
+
             while (rs.next()) {
 
                 T t = tClass.newInstance(); //通过反射，调用T对应的类的无参构造方法，实例化一个对象
                 for (int i = 0; i < metaData.getColumnCount(); i++) {
                     String columnLabel = metaData.getColumnLabel(i + 1); //注意此处：sql语句的列名必须和T对应的类的属性名完全相同
                     Object object = rs.getObject(columnLabel);
+                    //System.out.println("object type:" + object.getClass().getName());
                     BeanUtils.setProperty(t,columnLabel,object); //通过Commons-beanutils为t对象的columnLabel属性赋值为object
                 }
 

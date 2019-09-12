@@ -9,6 +9,7 @@ public class Course {
     private Integer courseId;
     private String courseName;
     private Date modifyDate;
+    private Student student;
 
     public Date getModifyDate() {
         return modifyDate;
