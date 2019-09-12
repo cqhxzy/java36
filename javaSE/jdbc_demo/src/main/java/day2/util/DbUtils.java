@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.logging.Level.parse;
-
 public class DbUtils {
     /*数据库连接字符串*/
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
