@@ -3,6 +3,10 @@ package day2.db;
 import day2.entity.Student;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
@@ -45,13 +49,40 @@ public class StudentDbManagerTest {
 
     @Test
     public void queryAll() {
+        StudentDbManager manager = new StudentDbManager();
+        List<Student> students = manager.queryAll();
+
+        students.stream().forEach(System.out::println);
     }
 
     @Test
     public void queryByExamCard() {
+        StudentDbManager manager = new StudentDbManager();
+        List<Map<String, Object>> list = manager.queryByExamCard("200523164754005");
+
+        list.stream().forEach(t->{   //t代表每次循环的Map集合
+            Set<String> keys = t.keySet();  //得到当前map集合的键的集合
+
+            for (String key : keys) { //遍历键的集合
+                Object value = t.get(key); //根据键获取值
+                System.out.println("key:" + key + ", value:" + value);
+            }
+            System.out.println();
+        });
     }
 
     @Test
     public void queryByIdCard() {
+        StudentDbManager manager = new StudentDbManager();
+        List<Map<String, Object>> list = manager.queryByIdCard("100824195263214584");
+        list.stream().forEach(t->{
+            Set<String> keys = t.keySet();
+
+            for (String key : keys) {
+                Object value = t.get(key);
+                System.out.println("key:" + key + ", value:" + value);
+            }
+            System.out.println();
+        });
     }
 }

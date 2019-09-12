@@ -3,6 +3,7 @@ package day2.db;
 import day2.entity.Student;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentDbInterface {
     /*添加学生*/
@@ -29,12 +30,12 @@ public interface StudentDbInterface {
      * @param examCard
      * @return
      */
-    List<Student> queryByExamCard(String examCard);
+    List<Map<String,Object>> queryByExamCard(String examCard);
 
     /**
      * 根据身份证号查询成绩
      * @param idCard
      * @return
      */
-    List<Student> queryByIdCard(String idCard);
+    List<Map<String,Object>> queryByIdCard(String idCard);
 }
