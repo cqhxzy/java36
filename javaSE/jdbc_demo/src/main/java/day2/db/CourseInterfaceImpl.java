@@ -31,8 +31,8 @@ public class CourseInterfaceImpl extends DbUtils implements CourseInterface {
 
     @Override
     public Course findById(Integer courseId) {
-        String sql = "select courseId,courseName from tab_course where courseId = ?";
-        List<Map<String, Object>> list = super.executeQuery1(sql, courseId);
+        String sql = "select courseId,courseName,modifyDate from tab_course where courseId = ?";
+        /*List<Map<String, Object>> list = super.executeQuery1(sql, courseId);
         if (list.size() <= 0) {
             return null;  //没有这个id对应的数据
         }
@@ -40,7 +40,11 @@ public class CourseInterfaceImpl extends DbUtils implements CourseInterface {
         Object courseId1 = stringObjectMap.get("courseId");
         Object courseName = stringObjectMap.get("courseName");
 
-        return new Course((Integer) courseId1, (String) courseName);
+        return new Course((Integer) courseId1, (String) courseName);*/
+
+        List<Course> courses = super.queryAll(Course.class, sql, courseId);
+
+        return courses.size() > 0 ? courses.get(0) : null;
     }
 
     @Override

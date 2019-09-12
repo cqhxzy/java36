@@ -1,6 +1,12 @@
 package day2.util;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -131,5 +137,61 @@ public class DbUtils {
             closeAll(connection,pstmt,rs);
         }
         return null;
+    }
+
+    /**
+     * 这是一个通用的查询方法
+     * 限制：查询的表最好不能有多表依赖关系
+     *      查询的sql语句的列名必须和类的属性名完全一致。否则不能映射到，从而获取数据
+     *      查询映射的类，必须有无参构造方法
+     * 只能查一个表对应一个实体类
+     * @param tClass
+     * @param sql
+     * @param params
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> queryAll(Class<T> tClass,String sql, Object... params) {
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<T> list = new ArrayList<>();
+        try {
+            connection = this.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            if (null != params) {
+                for (int i = 0; i < params.length; i++) {
+                    pstmt.setObject(i + 1, params[i]);
+                }
+            }
+
+            rs = pstmt.executeQuery();
+            ResultSetMetaData metaData = rs.getMetaData(); //得到sql的元信息
+
+            while (rs.next()) {
+
+                T t = tClass.newInstance(); //通过反射，调用T对应的类的无参构造方法，实例化一个对象
+                for (int i = 0; i < metaData.getColumnCount(); i++) {
+                    String columnLabel = metaData.getColumnLabel(i + 1); //注意此处：sql语句的列名必须和T对应的类的属性名完全相同
+                    Object object = rs.getObject(columnLabel);
+                    BeanUtils.setProperty(t,columnLabel,object); //通过Commons-beanutils为t对象的columnLabel属性赋值为object
+                }
+
+                //将t保存到集合
+                list.add(t);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } finally {
+            this.closeAll(connection,pstmt,rs);
+        }
+        return list;
     }
 }

@@ -26,7 +26,7 @@ public class CourseInterfaceImplTest {
     @Test
     public void findById() {
         CourseInterfaceImpl impl = new CourseInterfaceImpl();
-        Course course = impl.findById(1);
+        Course course = impl.findById(2);
         System.out.println(course);
     }
 

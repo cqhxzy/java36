@@ -1,20 +1,30 @@
 package day2.entity;
 
+import java.util.Date;
+
 /**
  * 课程类，对应数据库中tab_course表
  */
 public class Course {
     private Integer courseId;
     private String courseName;
+    private Date modifyDate;
 
-    public Course() {
+    public Date getModifyDate() {
+        return modifyDate;
     }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
 
     @Override
     public String toString() {
         return "Course{" +
                 "courseId=" + courseId +
                 ", courseName='" + courseName + '\'' +
+                ", modifyDate=" + modifyDate +
                 '}';
     }
 
@@ -34,8 +44,13 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public Course(Integer courseId, String courseName) {
+
+    public Course() {
+    }
+
+    public Course(Integer courseId, String courseName, Date modifyDate) {
         this.courseId = courseId;
         this.courseName = courseName;
+        this.modifyDate = modifyDate;
     }
 }
