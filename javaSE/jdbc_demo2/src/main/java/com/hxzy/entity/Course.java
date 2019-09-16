@@ -1,11 +1,13 @@
 package com.hxzy.entity;
 
+import com.hxzy.vo.CourseVo;
+
 import java.util.Date;
 
 /**
  * 课程类，对应数据库中tab_course表
  */
-public class Course {
+public class Course{
     private Integer courseId;
     private String courseName;
     private Date modifyDate;
@@ -53,4 +55,5 @@ public class Course {
         this.courseName = courseName;
         this.modifyDate = modifyDate;
     }
+
 }
