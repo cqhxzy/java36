@@ -5,7 +5,10 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -19,6 +22,8 @@ import java.util.Date;
  * jdbc数据库连接池的工具类
  */
 public class JdbcUtils {
+
+    private static Logger logger = LoggerFactory.getLogger(JdbcUtils.class);
 
     /**
      * 配置文件路径
@@ -124,6 +129,14 @@ public class JdbcUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取数据源
+     * @return
+     */
+    public DataSource getDataSource(){
+        return dataSource;
     }
 
     /**
@@ -289,5 +302,34 @@ public class JdbcUtils {
             this.closeAll(connection,pstmt,rs);
         }
         return list;
+    }
+
+    public <T> void executeQuery(ResultSetConsumer<T> rsc,String sql,Object...params){
+        Connection connection = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            connection = this.getConnection();
+            pstmt = connection.prepareStatement(sql);
+            if (null != params) {
+                for (int i = 0; i < params.length; i++) {
+                    pstmt.setObject(i + 1, params[i]);
+                }
+            }
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                T apply = rsc.apply(rs);//根据当前行组件一个泛型T的对象
+                logger.info("得到方法调用者组件的对象：" + apply);
+                rsc.accept(apply);
+                logger.info("将包装后的对象传递给方法的调用者：" + apply);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.closeAll(connection,pstmt,rs);
+        }
     }
 }
