@@ -1,13 +1,8 @@
-package utils;
+package com.hxzy.utils;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.alibaba.druid.pool.DruidPooledConnection;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.ParseException;
@@ -15,70 +10,26 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
-/**
- * jdbc数据库连接池的工具类
- */
-public class JdbcUtils {
+public class DbUtils {
+    /*数据库连接字符串*/
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://192.168.91.188:3306/myschool?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
 
-    /**
-     * 配置文件路径
-     */
-    private static final String CONFIG_FILE= "/jdbc.properties";
-
-    /**
-     * Druid数据库连接池
-     */
-    private static DruidDataSource dataSource;
-
-    static{
-        InputStream inputStream = JdbcUtils.class.getResourceAsStream(CONFIG_FILE);
-        Properties properties = new Properties();
+    //加载驱动类,只需要做一次就够了
+    static {
         try {
-            properties.load(inputStream);
-
-            dataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
-
-            /*System.out.println(dataSource.getMaxActive());
-            System.out.println(dataSource.getDriverClassName());
-            System.out.println(dataSource.getUsername());
-            System.out.println(dataSource.getPassword());*/
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    /*public static void main(String[] args) throws SQLException {
-
-            //int poolingCount = dataSource.getPoolingCount(); //获取池中的连接数
-
-            *//*for (int i = 0; i < 20; i++) {
-                DruidPooledConnection connection1 = dataSource.getConnection(); //从池中获取一个连接
-                System.out.println(System.currentTimeMillis() + "-> poolingCount:" + dataSource.getPoolingCount());
-            }*//*
-            dataSource.init();//初始化连接池
-            List<Map<String, Object>> poolingConnectionInfo = dataSource.getPoolingConnectionInfo(); //获取池中连接的信息
-
-            for (Map<String, Object> map : poolingConnectionInfo) {
-                Set<String> strings = map.keySet();
-                for (String string : strings) {
-                    Object value = map.get(string);
-                    System.out.println("key:" + string + ", value:" + value);
-                }
-                System.out.println();
-            }
-    }*/
-
-    /**
-     * 从连接池中获取连接
-     * @return
-     */
-    public Connection getConnection(){
+    /*获取连接*/
+    public Connection getConnection() {
         try {
-            DruidPooledConnection connection = dataSource.getConnection();
-            return connection;
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -93,34 +44,10 @@ public class JdbcUtils {
      * @param rs
      */
     public void closeAll(Connection connection, PreparedStatement pstmt, ResultSet rs) {
-        closeConnection(connection);
-        closePstmt(pstmt);
-        closeResultSet(rs);
-    }
-
-    public void closeConnection(Connection connection){
-        if (connection != null) {
-            try {
-                connection.close(); //将连接归还到连接池
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void closePstmt(PreparedStatement pstmt){
-        if (pstmt != null) {
-            try {
-                pstmt.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void closeResultSet(ResultSet resultSet){
         try {
-            if (resultSet != null) resultSet.close();
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+            if (connection != null) connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -240,15 +167,15 @@ public class JdbcUtils {
             ResultSetMetaData metaData = rs.getMetaData(); //得到sql的元信息
 
             /*
-             * 注册自定义的转换器：
-             *   BeanUtils.setProperty在为对象赋值的时候，会将值根据属性的类型，从ConverterUtilsBean中的集合中获取对应的转换器
-             *   根据转换器，就能够将不同的类型转换为对应Java Bean中属性的类型。
-             *   ConvertUtils.register(Converter,Class)
-             *           注册自定义的转换器。
-             *            Converter是转换器的实例，会在 BeanUtils.setProperty中被调用
-             *            Class对应的就是java Bean的属性的类型。（特殊的类型需要自定义转换器）
-             * */
-            ConvertUtils.register((object, value)->{
+            * 注册自定义的转换器：
+            *   BeanUtils.setProperty在为对象赋值的时候，会将值根据属性的类型，从ConverterUtilsBean中的集合中获取对应的转换器
+            *   根据转换器，就能够将不同的类型转换为对应Java Bean中属性的类型。
+            *   ConvertUtils.register(Converter,Class)
+            *           注册自定义的转换器。
+            *            Converter是转换器的实例，会在 BeanUtils.setProperty中被调用
+            *            Class对应的就是java Bean的属性的类型。（特殊的类型需要自定义转换器）
+            * */
+            ConvertUtils.register((object,value)->{
                 //内部类：value接收data转换成string类型
                 //SimpleDateFormat中的parse方法可以  把String型的字符串转换成特定格式的java.util.Date类
                 if (value != null) {
