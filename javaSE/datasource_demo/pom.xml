@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hxzy</groupId>
-    <artifactId>jdbc_demo2</artifactId>
+    <artifactId>datasource_demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencyManagement>
