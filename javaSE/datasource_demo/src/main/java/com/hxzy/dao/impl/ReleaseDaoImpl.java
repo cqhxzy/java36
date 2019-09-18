@@ -46,6 +46,7 @@ public class ReleaseDaoImpl extends JdbcUtils implements ReleaseDao {
         super.executeQuery(new ResultSetConsumer<Release>() {
             @Override
             public Release apply(ResultSet rs) {
+
                 try {
                     int releaseId = rs.getInt(1);
                     int roomId = rs.getInt(2);
