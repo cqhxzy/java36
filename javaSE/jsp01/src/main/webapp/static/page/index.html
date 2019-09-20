@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh">
+	<head>
+		<title>小说网站</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+		<link rel="stylesheet" href="../layer/theme/default/layer.css">
+		<!-- Include the FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+		<!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />-->
+
+		<script type="text/javascript" src="../vendor/jquery/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+
+		<link rel="stylesheet" href="../date/css/bootstrap-datetimepicker.css"/>
+		<script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.js"></script>
+		<script type="text/javascript" src="../date/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="../layer/layer.js"></script>
+		<style>
+			body {
+				background: url("../img/timg.png") no-repeat 0 0;
+				background-size: cover;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			li {
+				display: inline-block;
+				margin: 0 35px;
+			}
+
+			#index-ul .index {
+				text-decoration: none;
+				color: white;
+			}
+
+			#book-container {
+				padding: 5px;
+				width: 310px;
+				height: 450px;
+				margin: 50px auto;
+			}
+			#book-image{
+				width: 300px;
+				margin-bottom: 20px;
+			}
+
+			#title {
+				display: block;
+				line-height: 30px;
+				font-size: 25px;
+			}
+
+			#author {
+				display: inline-block;
+				float: left;
+				line-height: 30px;
+				font-size: 20px;
+			}
+
+			#fav_nums {
+				display: inline-block;
+				float: right;
+				line-height: 30px;
+				font-size: 15px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row col-lg-12">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="page-header">
+						<h2>小说网站</h2>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-12">
+							<p>
+							<ul id="index-ul">
+								<li><a href="#" class="index">全部作品</a></li>
+								<li><a href="#" class="index">排行</a></li>
+								<li><a href="#" class="index">作家专区</a></li>
+								<li><a href="#" class="index">免费</a></li>
+								<li><a href="#" class="index">完结小说</a></li>
+							</ul>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div id="book-container">-->
+		<!--<img src="${image}">-->
+		<!--<span id="title">${title}</span>-->
+		<!--<span id="author">${author}</span>-->
+		<!--<span id="fav_nums">${fav_nums} 喜欢</span>-->
+		<!--</div>-->
+
+		<script type="text/javascript">
+            $(document).ready(function () {
+                let $image;
+                let $title;
+                let $author;
+                let $fav_nums;
+                $.ajax({
+                    url: 'http://127.0.0.1:8080/jsp01/hotbooks.jsp',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+
+                        for (const obj in data) {
+                            if (data.hasOwnProperty(obj)) {
+                                const element = data[obj];
+                                $image = element.image;
+                                $title = element.title;
+                                $author = element.author;
+                                $fav_nums = element.fav_nums;
+
+                                let $div = `
+										<div id="book-container">
+											<img src="${$image}" id="book-image">
+											<span id="title">${$title}</span>
+											<span id="author">${$author}</span>
+											<span id="fav_nums">${$fav_nums} 喜欢</span>
+										</div>
+										`;
+                                $("#index-ul").append($div);
+                            }
+                        }
+                    }
+                });
+
+            });
+		</script>
+	</body>
+</html>

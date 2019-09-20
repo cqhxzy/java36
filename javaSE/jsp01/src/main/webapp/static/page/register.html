@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<title>注册</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+		<link rel="stylesheet" href="../layer/theme/default/layer.css">
+		<script type="text/javascript" src="../vendor/jquery/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+
+
+		<link rel="stylesheet" href="../date/css/bootstrap-datetimepicker.css"/>
+		<script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.js"></script>
+		<script type="text/javascript" src="../date/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="../layer/layer.js"></script>
+		<style>
+			body {
+				background: url("../img/timg.png") no-repeat 0 0;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row col-lg-12">
+				<!-- form: -->
+				<section>
+					<div class="col-lg-9 col-lg-offset-1 ">
+						<div class="page-header">
+							<h2>注册</h2>
+						</div>
+
+						<form id="defaultForm" method="post" class="form-horizontal">
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">用户名</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="account" placeholder="请输入用户名"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">密码</label>
+								<div class="col-lg-5">
+									<input type="password" class="form-control" name="password" placeholder="请输入密码"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">确认密码</label>
+								<div class="col-lg-5">
+									<input type="password" class="form-control" name="confirmPassword"
+										   placeholder="请再次输入密码"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">姓名</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="name" placeholder="请输入姓名"/>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">身份证号</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="idCard" placeholder="请输入身份证号"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">年龄</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="age" placeholder="请输入年龄"/>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">性别</label>
+								<div class="col-lg-5">
+									<div class="radio">
+										<label>
+											<input type="radio" name="gender" value="male"/> 男
+										</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio" name="gender" value="female"/> 女
+										</label>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">电话号码</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="phone" placeholder="请输入电话号码"/>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">邮箱</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="email" placeholder="请输入邮箱"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label">地址</label>
+								<div class="col-lg-5">
+									<input type="text" class="form-control" name="address" placeholder="请输入地址"/>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-4 control-label" id="captchaOperation"></label>
+								<div class="col-lg-2">
+									<input type="text" class="form-control" name="captcha" placeholder="验证码"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-lg-5 col-lg-offset-4">
+									<button type="submit" class="btn btn-primary">注册</button>
+									<button type="button" class="btn btn-info" id="resetBtn">重置</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<!-- :form -->
+			</div>
+		</div>
+
+		<script type="text/javascript">
+            $(document).ready(function () {
+
+                // Generate a simple captcha
+                function randomNumber(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1) + min);
+                };
+                $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+                $('#defaultForm').bootstrapValidator({
+//        live: 'disabled',
+                    message: '输入信息不可用',
+                    //指定validator的工作图标
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',//通过验证的图标，一个绿色的勾
+                        invalid: 'glyphicon glyphicon-remove',//红色叉叉
+                        validating: 'glyphicon glyphicon-refresh'//刷新图标
+                    },
+                    //fields是boostrap-validator提供的属性，代表参与验证的表单标签的name属性的值
+                    fields: {
+
+                        account: {
+                            message: '用户名未通过验证',//默认提示username未通过验证
+                            validators: {
+                                notEmpty: {
+                                    message: '用户名为必填项，不能为空'
+                                },
+                                stringLength: {
+                                    min: 5,
+                                    max: 30,
+                                    message: '用户名长度必须为5-30位'
+                                },
+                                regexp: {
+                                    regexp: /^[a-zA-Z0-9_\.]+$/,
+                                    message: '用户名只能包含字母、数字、下划线和点'
+                                },
+                                remote: {
+                                    url: 'http://161.117.84.33:8080/validAccount',
+                                    message: '用户名不可用'
+                                },
+                                different: {
+                                    field: 'password',//需要对比的input的对象
+                                    message: '用户名和密码不能相同'  /*用户名和密码不能相同*/
+                                }
+                            }
+                        },
+
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: '密码为必填项，不能为空'
+                                },
+                                different: {
+                                    field: 'account',
+                                    message: '用户名和密码不能相同'
+                                }
+                            }
+                        },
+                        confirmPassword: {
+                            validators: {
+                                notEmpty: {
+                                    message: '确认密码为必填项，不能为空'
+                                },
+                                identical: {
+                                    field: 'password',
+                                    message: '两次输入的密码不一致'
+                                },
+                                different: {
+                                    field: 'account',
+                                    message: '用户名和密码不能相同'
+                                }
+                            }
+                        },
+                        name: {
+                            validators: {
+                                notEmpty: {
+                                    message: '姓名为必填项，不能为空'
+                                }
+                            }
+                        },
+
+                        idCard: {
+                            validators: {
+                                notEmpty: {
+                                    message: '身份证号为必填项，不能为空'
+                                },
+                            }
+                        },
+                        age: {
+                            validators: {
+                                notEmpty: {
+                                    message: '年龄为必填项，不能为空'
+                                }
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: '邮箱为必填项，不能为空'
+                                },
+                                emailAddress: {
+                                    message: '请输入正确的邮箱地址'
+                                }
+                            }
+                        },
+                        address: {
+                            validators: {
+                                notEmpty: {
+                                    message: '地址为必填项，不能为空'
+                                }
+                            }
+                        },
+                        phone: {
+                            validators: {
+                                notEmpty: {
+                                    message: '电话号码为必填项，不能为空'
+                                }
+                            }
+                        },
+
+                        gender: {
+                            validators: {
+                                notEmpty: {
+                                    message: '请选择性别'
+                                }
+                            }
+                        },
+
+                        captcha: {
+                            validators: {
+                                callback: {
+                                    message: '验证码错误',
+                                    callback: function (value, validator) {
+                                        var items = $('#captchaOperation').html().split(' '),
+                                            sum = parseInt(items[0]) + parseInt(items[2]);
+                                        return value == sum;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    , submitHandler: function (v, form, btn) {
+                        let data = form.serialize();
+                        //console.log(form.serialize());
+                        let layerIndex;
+                        $.ajax({
+                            url: 'http://161.117.84.33:8080/register',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: form.serialize(),
+                            beforeSend: function () {
+                                layerIndex = layer.load(1);
+                            },
+                            success: function (data) {
+                                console.log(data);
+                                layer.close(layerIndex);
+                                if (data.isSuccess) {
+                                    layer.msg("注册成功", {icon: 1, time: 2000, anim: 6}, function () {
+
+                                        window.location.href = "login.html";
+                                    });
+                                } else {
+                                    layer.msg("注册失败", {icon: 2, time: 2000, anim: 6});
+                                }
+                            }
+                        });
+                    }
+                });
+
+                // Validate the form manually
+                $('#validateBtn').click(function () {
+                    $('#defaultForm').bootstrapValidator('validate');//手动触发验证
+                });
+
+                $('#resetBtn').click(function () {
+                    $('#defaultForm').data('bootstrapValidator').resetForm(true);//重置表单为初始值
+                });
+            });
+		</script>
+	</body>
+</html>
