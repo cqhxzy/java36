@@ -1,7 +1,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.hxzy.entity.Phone" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2019/9/20 0020
@@ -55,39 +56,28 @@
         <tbody>
             <%
                 /*模拟测试数据*/
-                Map map1 = new HashMap();
-                map1.put("brand","华为");
-                map1.put("ser","荣耀V9");
-                map1.put("price","2333");
+                Phone huawei = new Phone(1, "华为", "荣耀V9", 2333.0);
+                Phone mi = new Phone(2, "小米", "红米", 2333.0);
+                Phone iphone = new Phone(3, "apple", "iphone 11", 2333.0);
 
-                Map map2 = new HashMap();
-                map2.put("brand","小米");
-                map2.put("ser","红米");
-                map2.put("price","1333");
-
-                Map map3 = new HashMap();
-                map3.put("brand","apple");
-                map3.put("ser","iphone 11");
-                map3.put("price","8888");
-
-                List<Map> list = new ArrayList<>();
-                list.add(map1);
-                list.add(map2);
-                list.add(map3);
+                List<Phone> list = new ArrayList<>();
+                list.add(huawei);
+                list.add(mi);
+                list.add(iphone);
 
             %>
 
 
             <%
-                for (Map map : list) {  /*遍历集合*/
+                for (Phone phone : list) {  /*遍历集合*/
 
             %>
                 <tr>
-                    <td><%=map.get("brand")%></td>
-                    <td><%=map.get("ser")%></td>
-                    <td><%=map.get("price")%></td>
+                    <td><%=phone.getBrand()%></td>
+                    <td><%=phone.getSer()%></td>
+                    <td><%=phone.getPrice()%></td>
                     <td>
-                        <a href="#">修改</a>
+                        <a href="updatePhone.jsp?id=<%=phone.getId()%>">修改</a>
                         <a href="#">删除</a>
                     </td>
                 </tr>
