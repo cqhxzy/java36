@@ -4504,7 +4504,7 @@
                 i      = 0,
                 length = value.length;
             if (first > 3) {
-                // Legal entity
+                // Legal com.hxzy.entity
                 sum    = 0;
                 weight = [9, 1, 4, 8, 3, 10, 2, 5, 7, 6, 1];
                 for (i = 0; i < length; i++) {
