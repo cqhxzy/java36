@@ -8,6 +8,6 @@
 
     <!--设置项目的起始页-->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>phone/phonelist.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

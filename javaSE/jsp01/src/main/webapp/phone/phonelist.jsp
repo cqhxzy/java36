@@ -42,19 +42,29 @@
         <caption>
             <h2>
                 手机信息
-                <a href="addPhone.jsp">新增手机</a>
+                <!--
+                    在前端页面中，路径中的/代表着tomcat webapps根目录
+
+                    在后端java代码开发中，/代表着webapp目录。
+                -->
+                <%
+                    String contextPath = request.getContextPath();
+                %>
+                <a href="<%=contextPath%>/phone/addPhone.jsp">新增手机</a>
             </h2>
         </caption>
         <thead>
             <tr>
                 <th>品牌</th>
                 <th>系列</th>
+                <th>系统</th>
+                <th>网络类型</th>
                 <th>价格</th>
                 <th>操作</th>
             </tr>
         </thead>
         <tbody>
-            <%
+            <%--<%
                 /*模拟测试数据*/
                 Phone huawei = new Phone(1, "华为", "荣耀V9", 2333.0);
                 Phone mi = new Phone(2, "小米", "红米", 2333.0);
@@ -77,13 +87,13 @@
                     <td><%=phone.getSer()%></td>
                     <td><%=phone.getPrice()%></td>
                     <td>
-                        <a href="updatePhone.jsp?id=<%=phone.getId()%>">修改</a>
+                        <a href="<%=contextPath%>/phone/updatePhone.jsp?id=<%=phone.getId()%>">修改</a>
                         <a href="#">删除</a>
                     </td>
                 </tr>
             <%
                 }
-            %>
+            %>--%>
 
         </tbody>
     </table>

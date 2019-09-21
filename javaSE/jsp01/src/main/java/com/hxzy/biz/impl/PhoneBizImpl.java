@@ -16,21 +16,21 @@ public class PhoneBizImpl implements PhoneBiz {
 
     @Override
     public int update(Phone phone) {
-        return 0;
+        return dao.update(phone);
     }
 
     @Override
     public int delete(Integer id) {
-        return 0;
+        return dao.delete(id);
     }
 
     @Override
     public Phone findById(Integer id) {
-        return null;
+        return dao.findById(id);
     }
 
     @Override
     public List<Phone> queryAll() {
-        return null;
+        return dao.queryAll();
     }
 }

@@ -9,7 +9,9 @@ import java.util.List;
 public class PhoneDaoImpl extends JdbcUtils implements PhoneDao {
     @Override
     public int insert(Phone phone) {
-        return 0;
+        String sql = "insert into phone (seriesId,os,networkModel,price) values(?,?,?,?)";
+        Object[] params = {phone.getSeries().getId(),phone.getOs(),phone.getNetworkModel(),phone.getPrice()};
+        return super.executeUpdate(sql,params);
     }
 
     @Override

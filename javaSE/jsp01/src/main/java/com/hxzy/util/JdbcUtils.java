@@ -178,7 +178,7 @@ public class JdbcUtils {
      * @param params
      * @return
      */
-    public List<Map<String, Object>> executeQuery1(String sql, Object... params){
+    public List<Map<String, Object>> executeQuery(String sql, Object... params){
 
         List<Map<String, Object>> list = new ArrayList<>();
 
@@ -235,7 +235,7 @@ public class JdbcUtils {
      * @param <T>
      * @return
      */
-    public <T> List<T> queryAll(Class<T> tClass,String sql, Object... params) {
+    public <T> List<T> executeQuery(Class<T> tClass,String sql, Object... params) {
         Connection connection = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

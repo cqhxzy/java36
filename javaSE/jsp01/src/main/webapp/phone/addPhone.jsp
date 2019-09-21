@@ -62,10 +62,11 @@
             });
 
             $("[name='networkModel']").change(function(){
+
                 let val = $(this).val();
                 let checked = $(this).prop("checked"); //是否被选中
-                let $index = $(this).index();
-                console.log($index);
+                let $index = $(this).parent($(this)).index();//获取当前被选择的复选框的索引
+                //console.log($(this).parent($(this)).index());
                 if(!checked){
                     $(this).prop("checked",false);
                     $("[name='networkModel']").each(function(index,item){
@@ -77,15 +78,13 @@
                         }
                     })
                 }else{
-
-                   /* $("[name='networkModel']").each(function(index,item){
+                   $("[name='networkModel']").each(function(index,item){
                         //console.log("index:"  + index + ",$(this).index():" + $index)
-                        if(index <= $(this).index()){
+                        if(index <= $index){
                             $(item).prop("checked",true);
                         }
-                    });*/
+                    });
                 }
-
             });
 
             $("[name='brand']").change(function(){
@@ -101,6 +100,19 @@
 
                 let data = $("form").serialize();
                 console.log(data);
+                $.post(
+                    "<%=contextPath%>/phone/doAddPhone.jsp",
+                    data,
+                    function(json){
+                        console.log(json);
+                        if(json && json.result == true){
+                            alert("新增成功");
+                        } else {
+                            alert("新增失败");
+                        }
+                    }
+                    ,"json"
+                );
             });
 
             /*立即根据品牌查询系列*/

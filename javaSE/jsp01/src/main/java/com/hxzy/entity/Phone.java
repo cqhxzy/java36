@@ -2,18 +2,31 @@ package com.hxzy.entity;
 
 public class Phone {
     private Integer id;
-    private String brand;
-    private String ser;
+    private Series series;
+    private Integer os;
+    private Integer networkModel;
     private Double price;
 
     public Phone() {
     }
 
-    public Phone(Integer id, String brand, String ser, Double price) {
+    public Phone(Integer id, Series series, Integer os, Integer networkModel, Double price) {
         this.id = id;
-        this.brand = brand;
-        this.ser = ser;
+        this.series = series;
+        this.os = os;
+        this.networkModel = networkModel;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "id=" + id +
+                ", series=" + series +
+                ", os=" + os +
+                ", networkModel=" + networkModel +
+                ", price=" + price +
+                '}';
     }
 
     public Integer getId() {
@@ -24,20 +37,28 @@ public class Phone {
         this.id = id;
     }
 
-    public String getBrand() {
-        return brand;
+    public Series getSeries() {
+        return series;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setSeries(Series series) {
+        this.series = series;
     }
 
-    public String getSer() {
-        return ser;
+    public Integer getOs() {
+        return os;
     }
 
-    public void setSer(String ser) {
-        this.ser = ser;
+    public void setOs(Integer os) {
+        this.os = os;
+    }
+
+    public Integer getNetworkModel() {
+        return networkModel;
+    }
+
+    public void setNetworkModel(Integer networkModel) {
+        this.networkModel = networkModel;
     }
 
     public Double getPrice() {
