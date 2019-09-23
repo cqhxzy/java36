@@ -88,7 +88,7 @@
             });
 
             $("[name='brand']").change(function(){
-                $("[name='series']").empty();
+                $("[name='series']").empty(); //清空系列原本的option
                 querySeriesImmediately();
             });
 
@@ -101,8 +101,10 @@
                 //通过异步，将用户输入的手机信息插入到数据
                 let data = $("form").serialize();
                 console.log(data);
+
+                //向服务器发起一次post请求，将表单中的数据提交到addPhone的servlet中
                 $.post(
-                    "<%=contextPath%>/phone/doAddPhone.jsp",
+                    "<%=contextPath%>/phone/addPhone",
                     data,
                     function(json){
                         console.log(json);
@@ -121,9 +123,9 @@
                 let brandId = $("[name='brand']").val(); //获取当前被选择的option的value值,获取被选择的品牌编号
 
                 //利用ajax异步请求json
-                $.getJSON("<%=contextPath%>/phone/getSeries.jsp",{"brandId":brandId},function(json){
+                $.getJSON("<%=contextPath%>/phone/getSeries",{"brandId":brandId},function(json){
                     //console.log(json);
-                    $(json).each(function(index,item){
+                    $(json).each(function(index,item){ //通过循环，将json转换为option，并追加到系列下拉列表中
 
                         //console.log(item);
                         let id = item["id"];
@@ -170,8 +172,7 @@
             <tr>
                 <td>系列</td>
                 <td>
-                    <select name="series">
-                    </select>
+                    <select name="series"></select>
                 </td>
             </tr>
             <tr>
