@@ -5,6 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+    <!--为ServletContext设置全局的参数-->
+    <context-param>
+        <param-name>test</param-name>
+        <param-value>zhangsan</param-value>
+    </context-param>
+
   <!--配置servlet-->
   <servlet>
     <!--自定义的servlet名-->
@@ -35,4 +41,8 @@
     <url-pattern>/test2</url-pattern>
   </servlet-mapping>
 
+    <!--设置session的有效时间，3分钟-->
+  <session-config>
+    <session-timeout>3</session-timeout>
+  </session-config>
 </web-app>

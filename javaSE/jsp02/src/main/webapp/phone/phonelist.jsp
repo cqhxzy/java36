@@ -2,7 +2,8 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.hxzy.entity.Phone" %><%--
+<%@ page import="com.hxzy.entity.Phone" %>
+<%@ page import="com.hxzy.vo.PhoneVo" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2019/9/20 0020
@@ -64,36 +65,28 @@
             </tr>
         </thead>
         <tbody>
-            <%--<%
-                /*模拟测试数据*/
-                Phone huawei = new Phone(1, "华为", "荣耀V9", 2333.0);
-                Phone mi = new Phone(2, "小米", "红米", 2333.0);
-                Phone iphone = new Phone(3, "apple", "iphone 11", 2333.0);
-
-                List<Phone> list = new ArrayList<>();
-                list.add(huawei);
-                list.add(mi);
-                list.add(iphone);
-
-            %>
 
 
             <%
-                for (Phone phone : list) {  /*遍历集合*/
-
+                //从request作用域中获取集合
+                List<PhoneVo> list = (List<PhoneVo>) request.getAttribute("list");
+                if (list == null) return;
+                for (PhoneVo phone : list) {  /*遍历集合*/
             %>
                 <tr>
                     <td><%=phone.getBrand()%></td>
-                    <td><%=phone.getSer()%></td>
+                    <td><%=phone.getSeries()%></td>
+                    <td><%=phone.getOs()%></td>
+                    <td><%=phone.getNetworkModel()%></td>
                     <td><%=phone.getPrice()%></td>
                     <td>
-                        <a href="<%=contextPath%>/phone/updatePhone.jsp?id=<%=phone.getId()%>">修改</a>
-                        <a href="#">删除</a>
+                        <a href="<%=contextPath%>/updatePhone?id=<%=phone.getId()%>">修改</a>
+                        <a href="<%=contextPath%>/deletePhone?id=<%=phone.getId()%>">删除</a>
                     </td>
                 </tr>
             <%
                 }
-            %>--%>
+            %>
 
         </tbody>
     </table>

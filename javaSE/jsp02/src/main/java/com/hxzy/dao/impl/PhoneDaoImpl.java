@@ -5,6 +5,7 @@ import com.hxzy.entity.Phone;
 import com.hxzy.util.JdbcUtils;
 
 import java.util.List;
+import java.util.Map;
 
 public class PhoneDaoImpl extends JdbcUtils implements PhoneDao {
     @Override
@@ -16,7 +17,8 @@ public class PhoneDaoImpl extends JdbcUtils implements PhoneDao {
 
     @Override
     public int update(Phone phone) {
-        return 0;
+        String sql = "update phone set seriesId=?,os=?,networkModel=?,price=? where id=?";
+        return super.executeUpdate(sql,phone.getSeries().getId(),phone.getOs(),phone.getNetworkModel(),phone.getPrice(),phone.getId());
     }
 
     @Override
@@ -31,6 +33,33 @@ public class PhoneDaoImpl extends JdbcUtils implements PhoneDao {
 
     @Override
     public List<Phone> queryAll() {
+
         return null;
+    }
+
+    @Override
+    public List<Map<String,Object>> queryAllPhone2Map() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("select t1.*,t2.`name` `series`,t3.`name` `brand` from phone t1\n" )
+                .append("inner join series t2\n" )
+                .append("on t1.seriesId = t2.id\n" )
+                .append("inner join brand t3\n" )
+                .append("on t2.brandId = t3.id");
+        List<Map<String, Object>> list = super.executeQuery(builder.toString());
+        return list;
+    }
+
+    @Override
+    public Map<String, Object> findPhoneById(Integer id) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("select t1.id,t1.seriesId,t1.os,t1.networkModel,t1.price,t3.id brandId from phone t1\n" )
+                .append("inner join series t2\n" )
+                .append("on t1.seriesId = t2.id\n" )
+                .append("inner join brand t3\n" )
+                .append("on t2.brandId = t3.id")
+                .append(" where t1.id=?");
+        List<Map<String, Object>> list = super.executeQuery(builder.toString(),id);
+
+        return list.size() > 0 ? list.get(0) : null;
     }
 }
