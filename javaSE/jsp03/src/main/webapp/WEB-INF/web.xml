@@ -14,8 +14,36 @@
       <el-ignored>false</el-ignored>
     </jsp-property-group>
   </jsp-config>
-  
+
+  <!--配置过滤器的类-->
+  <filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>com.hxzy.filter.EncodingFilter</filter-class>
+      <!--配置过滤器初始化参数-->
+      <init-param>
+          <param-name>encoding</param-name>
+          <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+
+    <filter>
+        <filter-name>loginFitler</filter-name>
+        <filter-class>com.hxzy.filter.LoginFilter</filter-class>
+    </filter>
+
+  <!--要拦截哪些请求-->
+  <filter-mapping>
+    <filter-name>encoding</filter-name>
+    <!--拦截所有请求-->
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>loginFitler</filter-name>
+        <!--只拦截/sys/开头的所有请求-->
+        <url-pattern>/sys/*</url-pattern>
+    </filter-mapping>
   <welcome-file-list>
-    <welcome-file>index</welcome-file>
+    <welcome-file>sys/index</welcome-file>
   </welcome-file-list>
 </web-app>

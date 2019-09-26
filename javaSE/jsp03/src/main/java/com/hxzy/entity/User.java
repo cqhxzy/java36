@@ -5,6 +5,15 @@ public class User {
     private String name;
     private Integer age;
     private String address;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public String toString() {
@@ -13,17 +22,19 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
     public User() {
     }
 
-    public User(Integer id, String name, Integer age, String address) {
+    public User(Integer id, String name, Integer age, String address, String password) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
+        this.password = password;
     }
 
     public Integer getId() {

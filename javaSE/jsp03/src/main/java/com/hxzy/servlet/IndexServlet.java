@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/index")
+@WebServlet("/sys/index")
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,8 +34,8 @@ public class IndexServlet extends HttpServlet {
         ServletContext application = req.getServletContext();
         application.setAttribute("name","application_wangwu");
 
-        User user1 = new User(888,"admin",18,"渝中区");
-        User user2 = new User(99,"张三",18,"九龙坡区");
+        User user1 = new User(888,"admin",18,"渝中区","123456");
+        User user2 = new User(99,"张三",18,"九龙坡区","123456");
         //将对象添加到request作用域
 
         List<User> list = new ArrayList<>();
@@ -43,7 +43,9 @@ public class IndexServlet extends HttpServlet {
         list.add(user2);
         req.setAttribute("list", list);
         System.out.println(req.getContextPath());
+        System.out.println("request encoding：" + req.getCharacterEncoding());
+        System.out.println("response encoding：" + resp.getCharacterEncoding());
         //页面转发
-        req.getRequestDispatcher("index.jsp").forward(req,resp);
+        req.getRequestDispatcher("/index.jsp").forward(req,resp);
     }
 }
