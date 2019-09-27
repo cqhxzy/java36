@@ -16,20 +16,23 @@
             <tr>
                 <td>用户名</td>
                 <td>
-                    <input type="text" name="loginName" />
+                    <input type="text" name="loginName" value="${loginName}" />
                 </td>
             </tr>
             <tr>
                 <td>密码</td>
                 <td>
-                    <input type="password" name="loginPwd" />
+                    <input type="password" name="loginPwd" value="${loginPwd}" />
                 </td>
+            </tr>
+            <tr>
+                <td><label><input type="checkbox" name="rememberMe" ${remember?"checked":""} />记住我</label></td>
+                <td><label><input type="checkbox" />自动登录</label></td>
             </tr>
             <tr>
                 <td colspan="2">
                     <button>登录</button>
                 </td>
-
             </tr>
         </table>
     </form>
