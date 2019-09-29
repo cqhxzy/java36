@@ -36,12 +36,12 @@
 			<input type="text" class="form-control" id="loginPwd" placeholder="请输入登录密码" style="margin-top:10px;">
 			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		  </div>
-		  <div class="form-group has-success has-feedback">
+		  <%--<div class="form-group has-success has-feedback">
 			<select class="form-control" >
                 <option value="member">会员</option>
                 <option value="user">管理</option>
             </select>
-		  </div>
+		  </div>--%>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> 记住我

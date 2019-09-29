@@ -13,6 +13,7 @@
   </jsp-config>
 
     <listener>
+        <!--自定义的监听器-->
         <listener-class>com.hxzy.servlet.listener.GetBasePathListener</listener-class>
     </listener>
 
