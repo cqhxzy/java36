@@ -45,18 +45,18 @@ public class UserDaoImpl extends JdbcUtils implements UserDao {
 
     @Override
     public PageUtil<User> paging(PageUtil util,String condition) {
+        //根据条件动态拼接sql语句
         StringBuilder builder = new StringBuilder();
-        builder.append("select id,account,nickName,loginPwd,email from tab_users where 1 = 1");
+        builder.append("select id,account,nickName,loginPwd,email from tab_users where 1 = 1 \n");
 
         int limit = ( util.getPageIndex() - 1 ) * util.getPageSize();
-        Object[] params = StringUtils.strNotEmpty(condition) ? new Object[]{condition,condition,condition,limit,util.getPageSize()}:new Object[]{limit,util.getPageSize()};
+        String param = StringUtils.strNotEmpty(condition)?"%" + condition + "%":null;
+        Object[] params = StringUtils.strNotEmpty(condition) ? new Object[]{param,param,param,limit,util.getPageSize()}:new Object[]{limit,util.getPageSize()};
 
         if (StringUtils.strNotEmpty(condition)) {
-            builder.append("where\n");
-            builder.append("account like ? or nickName like ? or email like?");
+            builder.append("and account like ? or nickName like ? or email like ?");
         }
         builder.append("\n limit ?,?");
-
         List<User> users = super.executeQuery(User.class, builder.toString(), params);
         util.setData(users); //查询的数据
         int total = this.total(condition);
@@ -68,14 +68,15 @@ public class UserDaoImpl extends JdbcUtils implements UserDao {
     @Override
     public int total(String condition) {
         StringBuilder builder = new StringBuilder();
-        builder.append("select count(0) total from tab_users\n");
+        builder.append("select count(0) total from tab_users where 1=1");
 
+        condition = StringUtils.strNotEmpty(condition)?"%" + condition + "%":null;
         Object[] params = StringUtils.strNotEmpty(condition) ? new Object[]{condition,condition,condition}:null;
 
         if (StringUtils.strNotEmpty(condition)) {
-            builder.append("where\n");
-            builder.append("account like ? or nickName like ? or email like?");
+            builder.append(" and account like ? or nickName like ? or email like ?");
         }
+
         List<Map<String, Object>> list = super.executeQuery(builder.toString(), params);
 
         if (list.size() > 0) {

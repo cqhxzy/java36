@@ -52,7 +52,7 @@ public class UserBizImplTest {
     @Test
     public void paging() {
         PageUtil<User> pageUtil = new PageUtil<>();
-        PageUtil paging = userBiz.paging(pageUtil, null);
+        PageUtil paging = userBiz.paging(pageUtil, "admin");
         System.out.println(paging.getData());
         System.out.println("total:" + paging.getTotal());
         assertThat(paging.getData().size(), greaterThan(0));
