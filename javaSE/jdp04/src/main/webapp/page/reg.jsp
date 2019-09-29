@@ -26,22 +26,22 @@
 
 <div class="container">
 
-    <form class="form-signin" role="form">
+    <form class="form-signin" role="form" novalidate>
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 用户注册</h2>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" id="account" placeholder="请输入登录账号" autofocus>
+            <input type="text" class="form-control" id="account" placeholder="请输入登录账号" regex="[a-z0-9_-]{3,16}" autofocus required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" id="nickName" placeholder="请输入昵称" autofocus>
+            <input type="text" class="form-control" id="nickName" placeholder="请输入昵称" regex="[a-z0-9A-Z\u2E80-\u9FFF]+" autofocus required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" id="loginPwd" placeholder="请输入登录密码" style="margin-top:10px;">
+            <input type="text" class="form-control" id="loginPwd" placeholder="请输入登录密码" regex="[a-z0-9_-]{6,18}" style="margin-top:10px;" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" id="email" placeholder="请输入邮箱地址" style="margin-top:10px;">
+            <input type="text" class="form-control" id="email" placeholder="请输入邮箱地址" regex="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" style="margin-top:10px;" required>
             <span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="checkbox">
@@ -61,7 +61,6 @@
 
 <script>
     $(function(){
-
         $("#account").blur(function(){
             let account = $(this).val();
             let result = validateAccount();
@@ -74,6 +73,7 @@
                             //当msg关闭时触发的回调函数
                             console.log("layer回调被执行了")
                         })
+                        $("#account").parents(".form-group").removeClass("has-success").addClass("has-error")
                     } else {
                         layer.msg("用户名可以注册",{
                             icon:6,
@@ -81,6 +81,7 @@
                             offset:'rb',
                             time:1000
                         })
+                        $("#account").parents(".form-group").removeClass("has-error").addClass("has-success")
                     }
                 });
             }
@@ -88,31 +89,78 @@
         $("form").submit(function(e){
             e.preventDefault();
 
-            validateAccount();
-
+            let validate = new ValidateUser("form").validate();
+            if(validate){
+                //提交表单
+            }
         });
     });
+
+    /*
+    * 通过ES6的语法，创建一个js的类
+    * */
+    class ValidateUser{
+        constructor(x){
+            this.selector = x; //定义类需要的属性
+        }
+
+        //验证非空的方法
+       notNull(){
+           $(this.selector).find("input").each(function(index,item){
+               if( $(item).is("[required]")){
+                   let notNull = $(item).val() != "" && $(item).val().length > 0;
+                   if(!notNull){
+                       $(item).parents(".form-group").removeClass("has-success").addClass("has-error");
+                       layer.msg("非空选项必须填写",{icon:5,anim:6,time:2000});
+                       return false;
+                   } else {
+                       $(item).parents(".form-group").removeClass("has-error").addClass("has-success");
+                   }
+               }
+           })
+           return $(this.selector).find(".has-error").length == 0
+       }
+
+       //验证正则表达式的方法
+       test(){
+           $(this.selector).find("input").each(function(index,item){
+               if( $(item).is("[regex]")){
+                  let str = $(item).attr("regex");
+                   let val = $(item).val();
+                   let regex = new RegExp(str); //将字符串转换为正则表达式
+                  if (!regex.test(val)){
+                      layer.msg("请输入符合规则的内容",{icon:5,anim:6,time:2000})
+                      $(item).parents(".form-group").removeClass("has-success").addClass("has-error");
+                      return false;
+                  }
+               }
+           });
+           return $(this.selector).find(".has-error").length == 0 //true通过验证，false验证失败
+       }
+
+       //统一暴露出的方法
+       validate(){
+           let n = this.notNull();
+           if(n){
+              let t =  this.test();
+              return t;
+           }
+           return false;
+       }
+    }
 
     function validateAccount(){
         let account = $("#account").val();
         let regex = /^[a-zA-Z][a-zA-Z0-9]{3,11}$/;
-        if(!isNotNull(account)){
-            //账号不能为空
-            //console.log("账号不能为空");
-            layer.msg("账号不能为空",{
-                icon:5,
-                anim:6,
-                time:2000
-            });
-            return false;
-        } else if(!regex.test(account)){
+        if(!isNotNull(account) || !regex.test(account)){
             //账号不符合正则表达式规则
             //console.log("账号必须由英文字母开头的4-12位组成");
-            layer.open("账号必须由英文字母开头的4-12位组成",{
+            layer.msg("账号必须由英文字母开头的4-12位组成",{
                 icon:5,
                 anim:6,
                 time:2000
             });
+            $("#account").parents(".form-group").removeClass("has-success").addClass("has-error")
             return false;
         }
         return true;
@@ -123,7 +171,7 @@
     * val不为空，返回true
     * */
     function isNotNull(val){
-        return val != '';
+        return ! val == '';
     }
 </script>
 </body>
