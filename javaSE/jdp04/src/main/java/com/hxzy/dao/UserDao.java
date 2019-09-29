@@ -18,4 +18,11 @@ public interface UserDao extends CommonDao<User> {
      * @return
      */
     int total(String condition);
+
+    /**
+     * 查询用户名是否已经存在
+     * @param account
+     * @return
+     */
+    User validateAccount(String account);
 }

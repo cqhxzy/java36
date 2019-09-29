@@ -56,4 +56,16 @@ public class UserBizImpl implements UserBiz {
     public int total(String condition) {
         return userDao.total(condition);
     }
+
+    /**
+     * 如果用户名已经存在，则返回false
+     * 如果用户名不存在，则返回true
+     * @param account
+     * @return
+     */
+    @Override
+    public boolean validateAccount(String account) {
+        User user = userDao.validateAccount(account);
+        return user == null;
+    }
 }

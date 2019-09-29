@@ -88,6 +88,13 @@ public class UserDaoImpl extends JdbcUtils implements UserDao {
     }
 
     @Override
+    public User validateAccount(String account) {
+        String sql = "select id,account,nickName,email from tab_users where account = ?";
+        List<User> users = super.executeQuery(User.class, sql, account);
+        return users.size() > 0 ? users.get(0) : null;
+    }
+
+    @Override
     public User login(String account, String loginPwd) {
         String sql = "select id,account,nickName,loginPwd,email from tab_users where account = ? and loginPwd = ?";
         List<User> users = super.executeQuery(User.class, sql, account, loginPwd);

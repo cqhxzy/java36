@@ -19,4 +19,6 @@ public interface UserBiz extends CommonBiz<User> {
      * @return
      */
     int total(String condition);
+
+    boolean validateAccount(String account);
 }

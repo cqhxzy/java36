@@ -4,6 +4,7 @@ import com.hxzy.biz.UserBiz;
 import com.hxzy.entity.User;
 import com.hxzy.util.PageUtil;
 import com.hxzy.vo.UserVo;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -12,10 +13,10 @@ import static org.hamcrest.Matchers.*;
 
 public class UserBizImplTest {
 
-    private static UserBiz userBiz;
+    private UserBiz userBiz;
 
-    @BeforeClass
-    public static void init(){
+    @Before
+    public void init(){
         userBiz = new UserBizImpl();
     }
 
