@@ -29,11 +29,11 @@
       <form class="form-signin" role="form">
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-user"></i> 用户登录</h2>
 		  <div class="form-group has-success has-feedback">
-			<input type="text" class="form-control" id="account" placeholder="请输入登录账号" autofocus>
+			<input type="text" class="form-control" id="account" name="account" placeholder="请输入登录账号" autofocus>
 			<span class="glyphicon glyphicon-user form-control-feedback"></span>
 		  </div>
 		  <div class="form-group has-success has-feedback">
-			<input type="text" class="form-control" id="loginPwd" placeholder="请输入登录密码" style="margin-top:10px;">
+			<input type="password" class="form-control" id="loginPwd" name="loginPwd" placeholder="请输入登录密码" style="margin-top:10px;">
 			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		  </div>
 		  <%--<div class="form-group has-success has-feedback">
@@ -44,7 +44,7 @@
 		  </div>--%>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> 记住我
+            <input type="checkbox" name="remember"> 记住我
           </label>
           <br>
           <label>
@@ -54,20 +54,52 @@
             <a href="${basePath}/page/reg.jsp">我要注册</a>
           </label>
         </div>
-        <a class="btn btn-lg btn-success btn-block" onclick="dologin()" > 登录</a>
+        <button class="btn btn-lg btn-success btn-block" > 登录</button>
       </form>
     </div>
     <script src="${basePath}/static/jquery/jquery-2.1.1.min.js"></script>
     <script src="${basePath}/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${basePath}/static/layer/layer.js"></script>
     <script>
-    function dologin() {
-        var type = $(":selected").val();
-        if ( type == "user" ) {
-            window.location.href = "main.html";
-        } else {
-            window.location.href = "member.html";
+        $(function(){
+            $("form").submit(function(e){
+                e.preventDefault();//阻止表单的默认行为
+                //非空验证
+                let result = validate();
+                //console.log(result)
+                //通过验证
+                if(result){
+                    //提交表单
+                    let param = $("form").serialize(); //将表单序列化为字符串
+                    $.post("${basePath}/login",param,function(json){
+                        console.log(json)
+                        if (json && json.code == 200){
+                            //跳转页面
+                            window.location.href="${basePath}/page/sys/main.jsp";
+                        }  else if(json && json.code == 400){
+                            //提示登录失败
+                            layer.msg(json.msg,{icon:5,anim:6,time:2000});
+                        }
+                    });
+                }
+            });
+        });
+
+        function validate(){
+            let result = true; //标记，假设表单通过了验证
+            $(":text,:password").each(function(index,item){
+                //console.log(item)
+                let $item = $(item); //将dom对象转换为jquery对象
+                let val = $item.val(); //获取文本框或密码框的value值
+                if (val == "") {
+                    layer.msg("请输入必填项",{icon:5,anim:6,time:2000});
+                    $item.focus(); //获取焦点
+                    result = false;
+                    return false; //jquery的each循环中，通过return false跳出循环
+                }
+            });
+            return result;
         }
-    }
     </script>
   </body>
 </html>
